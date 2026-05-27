@@ -24,6 +24,21 @@ jobs:
       - name: Install dependencies
         run: pip install -r scripts/requirements.txt
 
+      - name: Debug - test Gemini API
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python - <<'EOF'
+          import os, requests
+          key = os.environ.get('GEMINI_API_KEY', '')
+          print(f"Key length: {len(key)}")
+          print(f"Key prefix: {key[:8]}..." if key else "KEY IS EMPTY")
+          url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={key}"
+          r = requests.post(url, json={"contents":[{"parts":[{"text":"Reply with the word OK only"}]}]}, timeout=30)
+          print(f"Status: {r.status_code}")
+          print(f"Response: {r.text[:400]}")
+          EOF
+
       - name: Fetch and summarize AI news
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
