@@ -94,22 +94,39 @@ articles_text = '\n\n---\n\n'.join([
     for a in articles[:25]
 ])
 
-prompt = f"""You are an AI news curator for an L&D (Learning & Development) team in Israel.
-Today is {TODAY}.
+prompt = f"""You are an AI news curator for a team in Israel. Today is {TODAY}.
 
 Here are the latest AI news articles:
 
 {articles_text}
 
-Select the {SOURCES['settings']['max_items_per_run']} most important articles. For each, return a JSON object:
+YOUR TASK:
+Select the {SOURCES['settings']['max_items_per_run']} best articles.
+
+STRICT SELECTION RULES — only include articles about:
+✅ New AI tools or apps launched
+✅ New features added to existing AI products (ChatGPT, Claude, Gemini, Copilot, etc.)
+✅ New AI models released
+✅ Practical AI product updates people can use today
+
+❌ EXCLUDE: opinion articles, job market analysis, organizational strategy, research papers, general trends, "AI will change X" articles.
+
+WRITING RULES (very important):
+- Write as if explaining to a smart person with NO tech background
+- Use everyday Hebrew — no jargon like "LLM", "inference", "pipeline", "harness", "scaffold"
+- Headlines: short, exciting, clear. Example: "ChatGPT יכול עכשיו לקרוא את המסמכים שלך"
+- Explanation: what is the tool, what does it do NEW, in 2 simple sentences
+- Impact: one concrete example of how someone can use this TODAY at work
+
+For each article return a JSON object:
 - "id": integer from 1
-- "headline": Hebrew headline (max 12 words)
-- "explanation": 2-3 sentences in Hebrew explaining what happened
-- "impact": 2-3 sentences in Hebrew on the impact for L&D professionals
+- "headline": Hebrew headline (max 10 words, exciting, clear)
+- "explanation": 2 sentences in plain Hebrew — what happened, what is new
+- "impact": 1-2 sentences — one concrete work example, no jargon
 - "categoryKey": one of: ai_models | docs | media | learning | language
 - "source": source name
 - "sourceUrl": article URL
-- "timeAgo": time in Hebrew (e.g. "לפני שעתיים")
+- "timeAgo": time in Hebrew (e.g. "לפני שעתיים", "היום", "אתמול")
 - "trending": true for top 2 items, false for others
 
 Return ONLY a valid JSON array. No markdown, no explanation."""
