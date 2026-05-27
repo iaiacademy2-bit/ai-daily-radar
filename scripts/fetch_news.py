@@ -11,7 +11,7 @@ import feedparser
 import requests
 from datetime import datetime, timezone, timedelta
 
-import google.generativeai as genai
+from google import genai
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
@@ -21,8 +21,7 @@ ROOT_DIR   = os.path.dirname(SCRIPT_DIR)
 with open(os.path.join(ROOT_DIR, 'sources.json'), encoding='utf-8') as f:
     SOURCES = json.load(f)
 
-genai.configure(api_key=os.environ['GEMINI_API_KEY'])
-model = genai.GenerativeModel('gemini-1.5-flash')
+client = genai.Client(api_key=os.environ['GEMINI_API_KEY'])
 
 TODAY     = datetime.now(timezone.utc).strftime('%Y-%m-%d')
 CUTOFF    = datetime.now(timezone.utc) - timedelta(hours=SOURCES['settings']['lookback_hours'])
@@ -136,7 +135,7 @@ Task:
 Return ONLY a valid JSON array. No markdown fences, no explanation, no extra text."""
 
 print('Calling Gemini API...')
-response = model.generate_content(prompt)
+response = client.models.generate_content(model='gemini-2.0-flash', contents=prompt)
 raw = response.text.strip()
 
 # Strip markdown fences if present
