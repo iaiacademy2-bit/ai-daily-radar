@@ -55,7 +55,7 @@ def fetch_rss(url, source_name, max_items=3):
         feed = feedparser.parse(url)
         for entry in feed.entries[:max_items]:
             title   = entry.get('title', '').strip()
-            summary = (entry.get('summary', '') or entry.get('description', ''))[:500].strip()
+            summary = (entry.get('summary', '') or entry.get('description', ''))[:250].strip()
             link    = entry.get('link', '')
             if title:
                 items.append({'title': title, 'summary': summary, 'link': link, 'source': source_name})
@@ -91,7 +91,7 @@ if not articles:
 
 articles_text = '\n\n---\n\n'.join([
     f'SOURCE: {a["source"]}\nTITLE: {a["title"]}\nSUMMARY: {a["summary"]}\nURL: {a["link"]}'
-    for a in articles[:25]
+    for a in articles[:15]
 ])
 
 prompt = f"""You are an AI news curator for a team in Israel. Today is {TODAY}.
@@ -135,7 +135,7 @@ url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash
 payload = {'contents': [{'parts': [{'text': prompt}]}]}
 
 print('Calling Gemini API...')
-resp = requests.post(url, json=payload, timeout=60)
+resp = requests.post(url, json=payload, timeout=120)
 
 if resp.status_code != 200:
     print(f'Gemini API error {resp.status_code}: {resp.text[:500]}')
