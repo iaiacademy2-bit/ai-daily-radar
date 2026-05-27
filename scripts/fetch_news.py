@@ -114,7 +114,7 @@ Select the {SOURCES['settings']['max_items_per_run']} most important articles. F
 
 Return ONLY a valid JSON array. No markdown, no explanation."""
 
-url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_KEY}'
+url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_KEY}'
 payload = {'contents': [{'parts': [{'text': prompt}]}]}
 
 print('Calling Gemini API...')
