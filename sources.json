@@ -1,0 +1,247 @@
+{
+  "last_updated": "2026-05-27",
+  "general_search": {
+    "enabled": true,
+    "queries": [
+      "AI news today",
+      "artificial intelligence breakthrough",
+      "חדשות בינה מלאכותית היום",
+      "LLM release",
+      "generative AI update"
+    ]
+  },
+  "websites": [
+    {
+      "name": "Artificial Intelligence News",
+      "url": "https://www.artificialintelligence-news.com/",
+      "language": "en",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "AI Magazine",
+      "url": "https://aimagazine.com/",
+      "language": "en",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "Google AI Blog",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/",
+      "language": "en",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "Reuters AI",
+      "url": "https://www.reuters.com/technology/artificial-intelligence/",
+      "language": "en",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "The Rundown AI",
+      "url": "https://www.therundown.ai/",
+      "language": "en",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "Let's AI Israel",
+      "url": "https://letsai.co.il/articles/news-and-innovations/",
+      "language": "he",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "Zirat AI",
+      "url": "https://ziratai.org/",
+      "language": "he",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "Eyal Marcus",
+      "url": "https://eyalmarcus.com/media-gallery/",
+      "language": "he",
+      "category": "media",
+      "enabled": true
+    },
+    {
+      "name": "Brain AI Blog",
+      "url": "https://brainai.co.il/blogs/",
+      "language": "he",
+      "category": "learning",
+      "enabled": true
+    },
+    {
+      "name": "OpenAI Blog",
+      "url": "https://openai.com/news/",
+      "language": "en",
+      "category": "ai_models",
+      "enabled": true,
+      "note": "added by system"
+    },
+    {
+      "name": "Anthropic Blog",
+      "url": "https://www.anthropic.com/news",
+      "language": "en",
+      "category": "ai_models",
+      "enabled": true,
+      "note": "added by system"
+    },
+    {
+      "name": "Hugging Face Blog",
+      "url": "https://huggingface.co/blog",
+      "language": "en",
+      "category": "ai_models",
+      "enabled": true,
+      "note": "added by system"
+    },
+    {
+      "name": "TechCrunch AI",
+      "url": "https://techcrunch.com/category/artificial-intelligence/",
+      "language": "en",
+      "category": "ai_models",
+      "enabled": true,
+      "note": "added by system"
+    },
+    {
+      "name": "VentureBeat AI",
+      "url": "https://venturebeat.com/ai/",
+      "language": "en",
+      "category": "ai_models",
+      "enabled": true,
+      "note": "added by system"
+    },
+    {
+      "name": "MIT Technology Review AI",
+      "url": "https://www.technologyreview.com/topic/artificial-intelligence/",
+      "language": "en",
+      "category": "ai_models",
+      "enabled": true,
+      "note": "added by system"
+    }
+  ],
+  "youtube_channels": [
+    {
+      "name": "M365 Copilot Connection",
+      "handle": "@M365CopilotConnection",
+      "url": "https://www.youtube.com/@M365CopilotConnection",
+      "category": "docs",
+      "enabled": true
+    },
+    {
+      "name": "Paul J Lipsky",
+      "handle": "@PaulJLipsky",
+      "url": "https://www.youtube.com/@PaulJLipsky",
+      "category": "learning",
+      "enabled": true
+    },
+    {
+      "name": "Roboverse",
+      "handle": "@roboverse987",
+      "url": "https://www.youtube.com/@roboverse987",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "Code Cave",
+      "handle": "@codecave0000",
+      "url": "https://www.youtube.com/@codecave0000/shorts",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "Ava Does AI",
+      "handle": "@AvaDoesAI",
+      "url": "https://www.youtube.com/@AvaDoesAI",
+      "category": "learning",
+      "enabled": true
+    },
+    {
+      "name": "Moshiko A",
+      "handle": "@moshikoa",
+      "url": "https://www.youtube.com/@moshikoa",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "Youri van Hofwegen",
+      "handle": "@Yourivanhofwegen",
+      "url": "https://www.youtube.com/@Yourivanhofwegen",
+      "category": "learning",
+      "enabled": true
+    },
+    {
+      "name": "Dean Stokes Online",
+      "handle": "@DeanStokesOnline",
+      "url": "https://www.youtube.com/@DeanStokesOnline/videos",
+      "category": "learning",
+      "enabled": true
+    },
+    {
+      "name": "AI Revolution X",
+      "handle": "@airevolutionx",
+      "url": "https://www.youtube.com/@airevolutionx",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "AI Daily Brief",
+      "handle": "@AIDailyBrief",
+      "url": "https://www.youtube.com/@AIDailyBrief",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "Kevin Stratvert",
+      "handle": "@KevinStratvert",
+      "url": "https://www.youtube.com/@KevinStratvert",
+      "category": "docs",
+      "enabled": true
+    },
+    {
+      "name": "Matthew Berman",
+      "handle": "@matthew_berman",
+      "url": "https://www.youtube.com/@matthew_berman",
+      "category": "ai_models",
+      "enabled": true,
+      "note": "added by system"
+    },
+    {
+      "name": "Two Minute Papers",
+      "handle": "@TwoMinutePapers",
+      "url": "https://www.youtube.com/@TwoMinutePapers",
+      "category": "ai_models",
+      "enabled": true,
+      "note": "added by system"
+    }
+  ],
+  "rss_feeds": [
+    {
+      "name": "OpenAI RSS",
+      "url": "https://openai.com/news/rss.xml",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "DeepMind Blog",
+      "url": "https://deepmind.google/discover/blog/",
+      "category": "ai_models",
+      "enabled": true
+    },
+    {
+      "name": "Ars Technica AI",
+      "url": "https://arstechnica.com/ai/",
+      "category": "ai_models",
+      "enabled": true
+    }
+  ],
+  "settings": {
+    "max_items_per_run": 10,
+    "lookback_hours": 24,
+    "summary_language": "both",
+    "categories": ["ai_models", "docs", "media", "learning", "language"]
+  }
+}
