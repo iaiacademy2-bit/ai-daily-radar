@@ -34,7 +34,7 @@ jobs:
           key = os.environ.get('GEMINI_API_KEY', '')
           print(f"Key length: {len(key)}")
           print(f"Key prefix: {key[:8]}..." if key else "KEY IS EMPTY")
-          url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key={key}"
+          url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key={key}"
           r = requests.post(url, json={"contents":[{"parts":[{"text":"Reply with the word OK only"}]}]}, timeout=30)
           print(f"Status: {r.status_code}")
           print(f"Response: {r.text[:400]}")

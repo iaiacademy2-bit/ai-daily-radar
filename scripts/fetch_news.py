@@ -194,12 +194,13 @@ prompt = f"""אתה עורך ידיעון AI שבועי לצוות פיתוח ה
 
 print(f'Calling Gemini API with {len(batch)} articles, requesting {TARGET_ITEMS} items...')
 
-url_api = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key={GEMINI_KEY}'
+url_api = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key={GEMINI_KEY}'
 payload = {
     'contents': [{'parts': [{'text': prompt}]}],
     'generationConfig': {
         'temperature': 0.4,
         'maxOutputTokens': 16384,
+        'thinkingConfig': {'thinkingBudget': 512}
     }
 }
 
