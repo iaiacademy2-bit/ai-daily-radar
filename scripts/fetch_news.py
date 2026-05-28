@@ -38,11 +38,18 @@ RSS_MAP = {
 }
 
 YOUTUBE_CHANNELS = {
-    'AI Daily Brief':    'UCcplBmD2-7NcLsEjwFjZpEg',
-    'AI Revolution X':   'UCU7GBNBiF68hpFd9LxFyFSg',
-    'Matthew Berman':    'UCnUYZLuoy1rq1aVMwx4aTzw',
-    'Two Minute Papers': 'UCbfYPyITQ-7l4upoX8nvctg',
-    'Kevin Stratvert':   'UCfpnY5NnBl-8L7rJZCmy7aw',
+    'M365 Copilot Connection': 'UCMVG4U2L2ocqgdYLAubuYGQ',
+    'Paul J Lipsky':           'UC1WU0dIZnRxQldlbUEiMkFE',
+    'Roboverse':               'UCZ3KGRwOA_uONNE_6VGG2bA',
+    'Ava Does AI':             'UCeKNYDvbHFQS7fA38GpoR-g',
+    'Moshiko A':               'UCKmZyF5BNkfebVVih8jzGyA',
+    'Youri van Hofwegen':      'UCdR7eGozLjafYMTd2BFnJaQ',
+    'Dean Stokes Online':      'UCX-znXB00avwiMyXU9GRlWA',
+    'AI Revolution X':         'UC5l7RouTQ60oUjLjt1Nh-UQ',
+    'AI Daily Brief':          'UCKelCK4ZaO6HeEI1KQjqzWA',
+    'Kevin Stratvert':         'UCfJT_eYDTmDE-ovKaxVE1ig',
+    'Matthew Berman':          'UCnUYZLuoy1rq1aVMwx4aTzw',
+    'Two Minute Papers':       'UCbfYPyITQ-7l4upoX8nvctg',
 }
 
 YT_RSS = 'https://www.youtube.com/feeds/videos.xml?channel_id='

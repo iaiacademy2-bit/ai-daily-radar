@@ -2,7 +2,7 @@ name: Daily AI News Update
 
 on:
   schedule:
-    - cron: '0 5 * * *'   # 07:00 Israel time (UTC+2)
+    - cron: '0 4 * * *'   # 07:00 Israel time (UTC+3 summer / IDT)
   workflow_dispatch:        # Manual trigger button in GitHub UI
 
 permissions:
