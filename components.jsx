@@ -233,7 +233,17 @@ function CardModal({ item, onClose, accentColor }) {
         </div>
 
         <div className="modal-meta">
-          <span>מקור: {item.source}</span>
+          {item.sourceUrl
+            ? <a href={item.sourceUrl} target="_blank" rel="noopener noreferrer"
+                 style={{ color: primary, textDecoration: 'none', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 4 }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+                {item.source}
+              </a>
+            : <span>מקור: {item.source}</span>
+          }
           <span>{item.timeAgo}</span>
         </div>
       </div>
