@@ -1,12 +1,14 @@
 """
-Daily AI News Fetcher — uses Gemini REST API directly (no SDK).
-Runs via GitHub Actions every morning at 07:00 Israel time.
+Weekly AI News Fetcher — every Sunday 07:00 Israel time.
+Uses Google News RSS search + curated RSS feeds for broad coverage.
+Targets 15-20 quality items per weekly digest.
 """
 
-import json, os, sys, time
+import json, os, sys, re
 import feedparser
 import requests
 from datetime import datetime, timezone
+from urllib.parse import quote
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR   = os.path.dirname(SCRIPT_DIR)
@@ -16,26 +18,49 @@ with open(os.path.join(ROOT_DIR, 'sources.json'), encoding='utf-8') as f:
 
 GEMINI_KEY = os.environ.get('GEMINI_API_KEY', '')
 if not GEMINI_KEY:
-    print('ERROR: GEMINI_API_KEY not set')
-    sys.exit(1)
+    print('ERROR: GEMINI_API_KEY not set'); sys.exit(1)
 
 TODAY = datetime.now(timezone.utc).strftime('%Y-%m-%d')
 
-# ── RSS feeds ──────────────────────────────────────────────────────────────
+# ── 1. Google News RSS — active search queries ─────────────────────────────
+# These guarantee fresh, relevant results regardless of RSS feed availability
 
-RSS_MAP = {
-    'https://www.artificialintelligence-news.com/':            'https://www.artificialintelligence-news.com/feed/',
-    'https://aimagazine.com/':                                 'https://aimagazine.com/feed/',
-    'https://www.therundown.ai/':                              'https://www.therundown.ai/feed',
-    'https://openai.com/news/':                                'https://openai.com/news/rss.xml',
-    'https://www.anthropic.com/news':                          'https://www.anthropic.com/rss.xml',
-    'https://huggingface.co/blog':                             'https://huggingface.co/blog/feed.xml',
-    'https://techcrunch.com/category/artificial-intelligence/':'https://techcrunch.com/category/artificial-intelligence/feed/',
-    'https://venturebeat.com/ai/':                             'https://venturebeat.com/ai/feed/',
-    'https://www.technologyreview.com/topic/artificial-intelligence/': 'https://www.technologyreview.com/feed/',
-    'https://arstechnica.com/ai/':                             'https://feeds.arstechnica.com/arstechnica/index',
-    'https://blog.google/innovation-and-ai/technology/ai/':   'https://blog.google/rss/',
-}
+GOOGLE_NEWS_SEARCHES = [
+    'ChatGPT new feature update',
+    'Claude AI new feature update',
+    'Gemini AI new feature 2026',
+    'Microsoft Copilot new update',
+    'AI tool new release',
+    'OpenAI new product launch',
+    'Canva AI new feature',
+    'AI video generator new',
+    'AI image generator new',
+    'בינה מלאכותית כלי חדש',
+    'AI training learning tool',
+    'Midjourney Sora new feature',
+    'NotebookLM new feature',
+    'Perplexity AI update',
+    'Runway AI new feature',
+]
+
+GOOGLE_NEWS_BASE = 'https://news.google.com/rss/search?q={}&hl=en&gl=US&ceid=US:en&num=5'
+
+# ── 2. Curated RSS feeds ────────────────────────────────────────────────────
+
+RSS_FEEDS = [
+    ('TechCrunch AI',       'https://techcrunch.com/category/artificial-intelligence/feed/'),
+    ('VentureBeat AI',      'https://venturebeat.com/ai/feed/'),
+    ('OpenAI Blog',         'https://openai.com/news/rss.xml'),
+    ('Google AI Blog',      'https://blog.google/rss/'),
+    ('Hugging Face Blog',   'https://huggingface.co/blog/feed.xml'),
+    ('MIT Tech Review AI',  'https://www.technologyreview.com/feed/'),
+    ('Ars Technica AI',     'https://feeds.arstechnica.com/arstechnica/index'),
+    ('AI News',             'https://www.artificialintelligence-news.com/feed/'),
+    ('The Rundown AI',      'https://www.therundown.ai/feed'),
+    ('Anthropic Blog',      'https://www.anthropic.com/rss.xml'),
+]
+
+# ── 3. YouTube channels ─────────────────────────────────────────────────────
 
 YOUTUBE_CHANNELS = {
     'M365 Copilot Connection': 'UCMVG4U2L2ocqgdYLAubuYGQ',
@@ -54,126 +79,154 @@ YOUTUBE_CHANNELS = {
 
 YT_RSS = 'https://www.youtube.com/feeds/videos.xml?channel_id='
 
-# ── Collect articles ────────────────────────────────────────────────────────
+# ── Fetch helpers ────────────────────────────────────────────────────────────
 
-def fetch_rss(url, source_name, max_items=3):
+def clean_html(text):
+    return re.sub(r'<[^>]+>', '', text or '').strip()
+
+def fetch_rss(url, source_name, max_items=5):
     items = []
     try:
         feed = feedparser.parse(url)
         for entry in feed.entries[:max_items]:
-            title   = entry.get('title', '').strip()
-            summary = (entry.get('summary', '') or entry.get('description', ''))[:250].strip()
+            title   = clean_html(entry.get('title', '')).strip()
+            summary = clean_html(entry.get('summary', '') or entry.get('description', ''))[:300].strip()
             link    = entry.get('link', '')
-            if title:
+            if title and len(title) > 10:
                 items.append({'title': title, 'summary': summary, 'link': link, 'source': source_name})
     except Exception as e:
-        print(f'  RSS error [{source_name}]: {e}')
+        print(f'  ! RSS error [{source_name}]: {e}')
     return items
 
+# ── Collect articles ─────────────────────────────────────────────────────────
+
+seen_titles = set()
 articles = []
 
-print('Fetching RSS feeds...')
-for site in SOURCES['websites']:
-    if not site.get('enabled'):
-        continue
-    rss_url = RSS_MAP.get(site['url'])
-    if rss_url:
-        items = fetch_rss(rss_url, site['name'])
-        articles.extend(items)
-        print(f'  {site["name"]}: {len(items)} items')
+def add_articles(new_items):
+    for item in new_items:
+        key = item['title'].lower()[:60]
+        if key not in seen_titles:
+            seen_titles.add(key)
+            articles.append(item)
 
-print('Fetching YouTube channels...')
+# Google News search (primary source)
+print('=== Google News searches ===')
+for query in GOOGLE_NEWS_SEARCHES:
+    url = GOOGLE_NEWS_BASE.format(quote(query))
+    items = fetch_rss(url, f'Google News: {query}', max_items=4)
+    add_articles(items)
+    print(f'  "{query}": {len(items)} items  (total: {len(articles)})')
+
+# Curated RSS feeds
+print('\n=== Curated RSS feeds ===')
+for name, url in RSS_FEEDS:
+    items = fetch_rss(url, name, max_items=5)
+    add_articles(items)
+    print(f'  {name}: {len(items)} items  (total: {len(articles)})')
+
+# YouTube channels
+print('\n=== YouTube channels ===')
 for name, channel_id in YOUTUBE_CHANNELS.items():
-    items = fetch_rss(YT_RSS + channel_id, f'YouTube: {name}', max_items=2)
-    articles.extend(items)
-    print(f'  {name}: {len(items)} videos')
+    items = fetch_rss(YT_RSS + channel_id, f'YouTube: {name}', max_items=3)
+    add_articles(items)
+    if items:
+        print(f'  {name}: {len(items)} videos  (total: {len(articles)})')
 
-print(f'\nTotal articles: {len(articles)}')
+print(f'\n✓ Total unique articles collected: {len(articles)}')
 
-if not articles:
-    print('No articles found — exiting without changes')
+if len(articles) < 5:
+    print('Not enough articles — keeping existing news-data.js')
     sys.exit(0)
 
-# ── Call Gemini REST API ────────────────────────────────────────────────────
+# ── Call Gemini — process in one focused batch ────────────────────────────────
+
+# Take top 40 articles for Gemini to choose from
+batch = articles[:40]
 
 articles_text = '\n\n---\n\n'.join([
-    f'SOURCE: {a["source"]}\nTITLE: {a["title"]}\nSUMMARY: {a["summary"]}\nURL: {a["link"]}'
-    for a in articles[:15]
+    f'[{i+1}] SOURCE: {a["source"]}\nTITLE: {a["title"]}\nSUMMARY: {a["summary"]}\nURL: {a["link"]}'
+    for i, a in enumerate(batch)
 ])
 
-prompt = f"""אתה עורך חדשות AI עבור צוות פיתוח הדרכה (L&D) בישראל. היום: {TODAY}.
+TARGET_ITEMS = 18  # aim for rich weekly digest
 
-הקהל שלנו: אנשי הדרכה, מעצבי למידה, מנהלים — ללא רקע טכני ב-AI.
-המטרה: לעזור להם לדעת אילו כלי AI חדשים קיימים ואיך להשתמש בהם בעבודה.
+prompt = f"""אתה עורך ידיעון AI שבועי לצוות פיתוח הדרכה (L&D) בישראל. היום: {TODAY}.
 
-להלן כתבות ועדכונים מהשבוע האחרון:
+הקהל: אנשי הדרכה, מעצבי למידה, מנהלים — ללא רקע טכני ב-AI.
+המטרה: ידיעון שבועי שנותן ערך אמיתי — אנשים צריכים לסיים לקרוא ולחשוב "וואו, אני חייב לנסות את זה".
+
+להלן {len(batch)} כתבות מהשבוע האחרון:
 
 {articles_text}
 
 ---
 
-כללי בחירה — בחר רק כתבות על:
-✅ כלי AI חדש שיצא (אפליקציה, שירות, פלטפורמה)
-✅ פיצ'ר חדש בכלי קיים (ChatGPT, Claude, Gemini, Copilot, Canva AI, וכד')
-✅ מודל AI חדש שיצא — עם דגש על מה אפשר לעשות איתו
-✅ עדכון מעשי שאנשי הדרכה יוכלו להשתמש בו
+בחר בדיוק {TARGET_ITEMS} פריטים. תן עדיפות ל:
+1. כלי AI חדש שיצא — מה הוא עושה, למה הוא מעניין
+2. פיצ'ר חדש בכלי קיים (ChatGPT, Claude, Gemini, Canva, Copilot, Midjourney וכד')
+3. שדרוג שאפשר להשתמש בו מחר בבוקר בפיתוח הדרכה
+4. סרטון YouTube שמסביר כלי או טכניקה שימושיים
 
-❌ אל תכלול: מאמרי דעה, ניתוחי שוק עבודה, מחקרים אקדמיים, "AI ישנה את העולם", פוליטיקה.
+אל תבחר: מאמרי ניתוח שוק, מחקרים אקדמיים, פוליטיקה, "AI ישנה את העולם".
 
----
+כללי כתיבה (קריטי):
+- כותרת: מלהיבה, ספציפית, בעברית. "גוגל השיקה כלי שיוצר סרטוני הדרכה מדהימים תוך שניות" > "עדכון חדש מגוגל"
+- הסבר: מה הכלי עושה חדש ב-2 משפטים. פשוט כמו להסביר לחבר בוואטסאפ.
+- שימוש: משפט אחד שמתחיל ב"אפשר לקחת את זה ו..." — דוגמה קונקרטית לפיתוח הדרכה.
+- אסור: "LLM", "מודל שפה", "אינפרנס", "פייפליין", "פרומפט", "ארכיטקטורה"
+- מותר: "בוט", "צ'אט AI", "כלי", "אפליקציה", "אוטומציה", "יוצר תוכן"
 
-כללי כתיבה — חשוב מאוד:
-- כתוב כאילו אתה מסביר לחבר חכם שאין לו רקע טכני
-- עברית פשוטה וחיה — בלי מונחים כמו "מודל שפה", "אינפרנס", "פרומפט", "פייפליין"
-- כותרת: מלהיב, ברור, קצר. למשל: "גוגל השיקה כלי שיוצר תמונות מדהימות בחינם"
-- הסבר: מה הכלי/הפיצ'ר, מה חדש בו — 2 משפטים פשוטים
-- שימוש ב-L&D: דוגמה קונקרטית אחת לשימוש מעשי בפיתוח הדרכה — "למשל, אפשר לקחת את הכלי הזה וליצור..."
+עבור כל פריט החזר JSON:
+{{
+  "id": מספר מ-1,
+  "headline": "כותרת בעברית מלהיבה (עד 12 מילים)",
+  "explanation": "2 משפטים בעברית פשוטה — מה חדש ומה מיוחד",
+  "impact": "משפט אחד שמתחיל ב'אפשר לקחת את זה ו...' — שימוש קונקרטי בפיתוח הדרכה",
+  "categoryKey": "ai_models או docs או media או learning או language",
+  "source": "שם המקור",
+  "sourceUrl": "קישור",
+  "timeAgo": "מתי בעברית (היום / אתמול / השבוע)",
+  "trending": true לשלושה הפריטים הכי חמים, false לשאר
+}}
 
----
+החזר JSON array בלבד. ללא markdown, ללא טקסט נוסף."""
 
-עבור כל כתבה שתבחר, החזר JSON עם השדות הבאים:
-- "id": מספר עוקב מ-1
-- "headline": כותרת בעברית (מקסימום 10 מילים, מלהיבה וברורה)
-- "explanation": 2 משפטים בעברית פשוטה — מה הכלי, מה חדש
-- "impact": משפט אחד-שניים — דוגמה מעשית ספציפית לשימוש בפיתוח הדרכה, מנוסח בשפת "אפשר לקחת את זה ו..."
-- "categoryKey": אחד מ: ai_models | docs | media | learning | language
-- "source": שם המקור
-- "sourceUrl": קישור לכתבה
-- "timeAgo": מתי בעברית (למשל "לפני יומיים", "השבוע", "אתמול")
-- "trending": true לשני הפריטים החשובים ביותר, false לשאר
+print(f'Calling Gemini API with {len(batch)} articles, requesting {TARGET_ITEMS} items...')
 
-החזר JSON array בלבד. ללא markdown, ללא הסברים נוספים."""
+url_api = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_KEY}'
+payload = {
+    'contents': [{'parts': [{'text': prompt}]}],
+    'generationConfig': {'temperature': 0.4, 'maxOutputTokens': 8192}
+}
 
-url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_KEY}'
-payload = {'contents': [{'parts': [{'text': prompt}]}]}
-
-print('Calling Gemini API...')
-resp = requests.post(url, json=payload, timeout=120)
+try:
+    resp = requests.post(url_api, json=payload, timeout=180)
+except requests.exceptions.Timeout:
+    print('Gemini API timeout — keeping existing news-data.js')
+    sys.exit(0)
 
 if resp.status_code != 200:
-    print(f'Gemini API error {resp.status_code}: {resp.text[:500]}')
+    print(f'Gemini API error {resp.status_code}: {resp.text[:300]}')
     sys.exit(1)
 
 raw = resp.json()['candidates'][0]['content']['parts'][0]['text'].strip()
 print(f'Gemini response: {len(raw)} chars')
 
-# Strip markdown fences if present
+# Strip markdown fences
 if raw.startswith('```'):
-    raw = raw.split('\n', 1)[1]
-    raw = raw.rsplit('```', 1)[0].strip()
+    raw = raw.split('\n', 1)[1].rsplit('```', 1)[0].strip()
 
 try:
     news_items = json.loads(raw)
+    print(f'✓ Parsed {len(news_items)} news items')
 except json.JSONDecodeError as e:
-    print(f'JSON parse error: {e}')
-    print('Raw:', raw[:300])
+    print(f'JSON parse error: {e}\nRaw: {raw[:400]}')
     sys.exit(1)
 
-print(f'Generated {len(news_items)} items')
+# ── Write news-data.js ──────────────────────────────────────────────────────
 
-# ── Write news-data.js ─────────────────────────────────────────────────────
-
-js = f"""// Categories definition with colors
+js = f"""// Categories
 const CATEGORIES = {{
   ai_models: {{ name: 'כלים ומודלים חדשים',  bg: '#eef2ff', text: '#0a47fd' }},
   docs:      {{ name: 'מסמכים ותוכן',        bg: '#ecfdf5', text: '#059669' }},
@@ -182,7 +235,7 @@ const CATEGORIES = {{
   language:  {{ name: 'שפה ותרגום',          bg: '#fff1f2', text: '#e11d48' }}
 }};
 
-// News data — auto-generated on {TODAY}
+// Weekly digest — auto-generated {TODAY}
 const NEWS_DATA = {json.dumps(news_items, ensure_ascii=False, indent=2)};
 
 window.NEWS_DATA = NEWS_DATA;
@@ -194,4 +247,4 @@ out = os.path.join(ROOT_DIR, 'news-data.js')
 with open(out, 'w', encoding='utf-8') as f:
     f.write(js)
 
-print(f'Done! news-data.js written with {len(news_items)} items for {TODAY}')
+print(f'\n✅ Done! news-data.js written with {len(news_items)} items for weekly digest {TODAY}')
