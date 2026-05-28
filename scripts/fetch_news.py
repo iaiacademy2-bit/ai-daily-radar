@@ -101,42 +101,48 @@ articles_text = '\n\n---\n\n'.join([
     for a in articles[:15]
 ])
 
-prompt = f"""You are an AI news curator for a team in Israel. Today is {TODAY}.
+prompt = f"""אתה עורך חדשות AI עבור צוות פיתוח הדרכה (L&D) בישראל. היום: {TODAY}.
 
-Here are the latest AI news articles:
+הקהל שלנו: אנשי הדרכה, מעצבי למידה, מנהלים — ללא רקע טכני ב-AI.
+המטרה: לעזור להם לדעת אילו כלי AI חדשים קיימים ואיך להשתמש בהם בעבודה.
+
+להלן כתבות ועדכונים מהשבוע האחרון:
 
 {articles_text}
 
-YOUR TASK:
-Select the {SOURCES['settings']['max_items_per_run']} best articles.
+---
 
-STRICT SELECTION RULES — only include articles about:
-✅ New AI tools or apps launched
-✅ New features added to existing AI products (ChatGPT, Claude, Gemini, Copilot, etc.)
-✅ New AI models released
-✅ Practical AI product updates people can use today
+כללי בחירה — בחר רק כתבות על:
+✅ כלי AI חדש שיצא (אפליקציה, שירות, פלטפורמה)
+✅ פיצ'ר חדש בכלי קיים (ChatGPT, Claude, Gemini, Copilot, Canva AI, וכד')
+✅ מודל AI חדש שיצא — עם דגש על מה אפשר לעשות איתו
+✅ עדכון מעשי שאנשי הדרכה יוכלו להשתמש בו
 
-❌ EXCLUDE: opinion articles, job market analysis, organizational strategy, research papers, general trends, "AI will change X" articles.
+❌ אל תכלול: מאמרי דעה, ניתוחי שוק עבודה, מחקרים אקדמיים, "AI ישנה את העולם", פוליטיקה.
 
-WRITING RULES (very important):
-- Write as if explaining to a smart person with NO tech background
-- Use everyday Hebrew — no jargon like "LLM", "inference", "pipeline", "harness", "scaffold"
-- Headlines: short, exciting, clear. Example: "ChatGPT יכול עכשיו לקרוא את המסמכים שלך"
-- Explanation: what is the tool, what does it do NEW, in 2 simple sentences
-- Impact: one concrete example of how someone can use this TODAY at work
+---
 
-For each article return a JSON object:
-- "id": integer from 1
-- "headline": Hebrew headline (max 10 words, exciting, clear)
-- "explanation": 2 sentences in plain Hebrew — what happened, what is new
-- "impact": 1-2 sentences — one concrete work example, no jargon
-- "categoryKey": one of: ai_models | docs | media | learning | language
-- "source": source name
-- "sourceUrl": article URL
-- "timeAgo": time in Hebrew (e.g. "לפני שעתיים", "היום", "אתמול")
-- "trending": true for top 2 items, false for others
+כללי כתיבה — חשוב מאוד:
+- כתוב כאילו אתה מסביר לחבר חכם שאין לו רקע טכני
+- עברית פשוטה וחיה — בלי מונחים כמו "מודל שפה", "אינפרנס", "פרומפט", "פייפליין"
+- כותרת: מלהיב, ברור, קצר. למשל: "גוגל השיקה כלי שיוצר תמונות מדהימות בחינם"
+- הסבר: מה הכלי/הפיצ'ר, מה חדש בו — 2 משפטים פשוטים
+- שימוש ב-L&D: דוגמה קונקרטית אחת לשימוש מעשי בפיתוח הדרכה — "למשל, אפשר לקחת את הכלי הזה וליצור..."
 
-Return ONLY a valid JSON array. No markdown, no explanation."""
+---
+
+עבור כל כתבה שתבחר, החזר JSON עם השדות הבאים:
+- "id": מספר עוקב מ-1
+- "headline": כותרת בעברית (מקסימום 10 מילים, מלהיבה וברורה)
+- "explanation": 2 משפטים בעברית פשוטה — מה הכלי, מה חדש
+- "impact": משפט אחד-שניים — דוגמה מעשית ספציפית לשימוש בפיתוח הדרכה, מנוסח בשפת "אפשר לקחת את זה ו..."
+- "categoryKey": אחד מ: ai_models | docs | media | learning | language
+- "source": שם המקור
+- "sourceUrl": קישור לכתבה
+- "timeAgo": מתי בעברית (למשל "לפני יומיים", "השבוע", "אתמול")
+- "trending": true לשני הפריטים החשובים ביותר, false לשאר
+
+החזר JSON array בלבד. ללא markdown, ללא הסברים נוספים."""
 
 url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_KEY}'
 payload = {'contents': [{'parts': [{'text': prompt}]}]}
@@ -169,11 +175,11 @@ print(f'Generated {len(news_items)} items')
 
 js = f"""// Categories definition with colors
 const CATEGORIES = {{
-  ai_models: {{ name: 'מודלי בינה מלאכותית', bg: '#eef2ff', text: '#0a47fd' }},
-  docs:      {{ name: 'קבצים ומסמכים',       bg: '#ecfdf5', text: '#059669' }},
-  media:     {{ name: 'מדיה',                 bg: '#f5f3ff', text: '#7c3aed' }},
-  learning:  {{ name: 'למידה והדרכה',         bg: '#fffbeb', text: '#d97706' }},
-  language:  {{ name: 'שפה ותרגום',           bg: '#fff1f2', text: '#e11d48' }}
+  ai_models: {{ name: 'כלים ומודלים חדשים',  bg: '#eef2ff', text: '#0a47fd' }},
+  docs:      {{ name: 'מסמכים ותוכן',        bg: '#ecfdf5', text: '#059669' }},
+  media:     {{ name: 'תמונה, וידאו וקול',   bg: '#f5f3ff', text: '#7c3aed' }},
+  learning:  {{ name: 'פיתוח הדרכה',         bg: '#fffbeb', text: '#d97706' }},
+  language:  {{ name: 'שפה ותרגום',          bg: '#fff1f2', text: '#e11d48' }}
 }};
 
 // News data — auto-generated on {TODAY}

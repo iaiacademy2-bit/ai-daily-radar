@@ -240,7 +240,7 @@
   ],
   "settings": {
     "max_items_per_run": 10,
-    "lookback_hours": 24,
+    "lookback_hours": 168,
     "summary_language": "both",
     "categories": ["ai_models", "docs", "media", "learning", "language"]
   }

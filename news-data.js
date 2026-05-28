@@ -1,10 +1,10 @@
 // Categories definition with colors
 const CATEGORIES = {
-  ai_models: { name: 'מודלי בינה מלאכותית', bg: '#eef2ff', text: '#0a47fd' },
-  docs:      { name: 'קבצים ומסמכים',       bg: '#ecfdf5', text: '#059669' },
-  media:     { name: 'מדיה',                 bg: '#f5f3ff', text: '#7c3aed' },
-  learning:  { name: 'למידה והדרכה',         bg: '#fffbeb', text: '#d97706' },
-  language:  { name: 'שפה ותרגום',           bg: '#fff1f2', text: '#e11d48' }
+  ai_models: { name: 'כלים ומודלים חדשים',  bg: '#eef2ff', text: '#0a47fd' },
+  docs:      { name: 'מסמכים ותוכן',        bg: '#ecfdf5', text: '#059669' },
+  media:     { name: 'תמונה, וידאו וקול',   bg: '#f5f3ff', text: '#7c3aed' },
+  learning:  { name: 'פיתוח הדרכה',         bg: '#fffbeb', text: '#d97706' },
+  language:  { name: 'שפה ותרגום',          bg: '#fff1f2', text: '#e11d48' }
 };
 
 // News data — auto-generated on 2026-05-27
