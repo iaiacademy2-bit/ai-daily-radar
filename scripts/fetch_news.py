@@ -197,7 +197,11 @@ print(f'Calling Gemini API with {len(batch)} articles, requesting {TARGET_ITEMS}
 url_api = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_KEY}'
 payload = {
     'contents': [{'parts': [{'text': prompt}]}],
-    'generationConfig': {'temperature': 0.4, 'maxOutputTokens': 8192}
+    'generationConfig': {
+        'temperature': 0.4,
+        'maxOutputTokens': 16384,
+    },
+    'thinkingConfig': {'thinkingBudget': 0}   # disable thinking — saves tokens for output
 }
 
 try:
