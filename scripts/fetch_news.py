@@ -26,21 +26,26 @@ TODAY = datetime.now(timezone.utc).strftime('%Y-%m-%d')
 # These guarantee fresh, relevant results regardless of RSS feed availability
 
 GOOGLE_NEWS_SEARCHES = [
-    'ChatGPT new feature update',
-    'Claude AI new feature update',
-    'Gemini AI new feature 2026',
-    'Microsoft Copilot new update',
-    'AI tool new release',
-    'OpenAI new product launch',
-    'Canva AI new feature',
-    'AI video generator new',
-    'AI image generator new',
-    'בינה מלאכותית כלי חדש',
-    'AI training learning tool',
-    'Midjourney Sora new feature',
-    'NotebookLM new feature',
-    'Perplexity AI update',
+    'ChatGPT new feature update 2026',
+    'Claude AI new feature 2026',
+    'Google Gemini Agent update 2026',
+    'Google Gemini new feature launch',
+    'Microsoft Copilot new update 2026',
+    'OpenAI new product launch 2026',
+    'AI tool launched released 2026',
+    'Canva AI new feature 2026',
+    'AI video generator new release',
+    'AI image generator new tool',
+    'NotebookLM new feature update',
+    'Perplexity AI new update',
     'Runway AI new feature',
+    'Midjourney new feature update',
+    'Google IO 2026 AI announcements',
+    'Gemini 2.5 new capability',
+    'AI agent automation new tool',
+    'Adobe AI new feature 2026',
+    'בינה מלאכותית כלי חדש 2026',
+    'AI learning training tool new',
 ]
 
 GOOGLE_NEWS_BASE = 'https://news.google.com/rss/search?q={}&hl=en&gl=US&ceid=US:en&num=5'
@@ -173,7 +178,13 @@ prompt = f"""אתה עורך ידיעון AI שבועי לצוות פיתוח ה
 כללי כתיבה (קריטי):
 - כותרת: מלהיבה, ספציפית, בעברית. "גוגל השיקה כלי שיוצר סרטוני הדרכה מדהימים תוך שניות" > "עדכון חדש מגוגל"
 - הסבר: מה הכלי עושה חדש ב-2 משפטים. פשוט כמו להסביר לחבר בוואטסאפ.
-- שימוש: משפט אחד שמתחיל ב"אפשר לקחת את זה ו..." — דוגמה קונקרטית לפיתוח הדרכה.
+- השפעה: דוגמה קונקרטית לשימוש בפיתוח הדרכה — חייבת להיות שונה לכל פריט!
+  כתוב בגוף שלישי, בטון שונה בכל פעם. דוגמאות לסגנונות מגוונים:
+  "מנהל הדרכה יכול עכשיו לייצר..."
+  "במקום לבזבז שעות על..., הכלי הזה עושה את זה תוך..."
+  "צוות L&D שמפתח קורס על X ישתמש בזה כדי..."
+  "מי שמלמד Excel בארגון יוכל לגרום לתכנים..."
+  לא לחזור על אותו מבנה פעמיים!
 - אסור: "LLM", "מודל שפה", "אינפרנס", "פייפליין", "פרומפט", "ארכיטקטורה"
 - מותר: "בוט", "צ'אט AI", "כלי", "אפליקציה", "אוטומציה", "יוצר תוכן"
 
@@ -182,7 +193,7 @@ prompt = f"""אתה עורך ידיעון AI שבועי לצוות פיתוח ה
   "id": מספר מ-1,
   "headline": "כותרת בעברית מלהיבה (עד 12 מילים)",
   "explanation": "2 משפטים בעברית פשוטה — מה חדש ומה מיוחד",
-  "impact": "משפט אחד שמתחיל ב'אפשר לקחת את זה ו...' — שימוש קונקרטי בפיתוח הדרכה",
+  "impact": "1-2 משפטים — דוגמה מעשית ספציפית לפיתוח הדרכה, בסגנון שונה מהפריטים האחרים",
   "categoryKey": "ai_models או docs או media או learning או language",
   "source": "שם המקור",
   "sourceUrl": "קישור",
