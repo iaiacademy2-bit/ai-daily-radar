@@ -63,9 +63,12 @@ function App({ tweakDefaults }) {
         onViewChange={v => setTweak('viewMode', v)}
       />
 
+      <StatsBar items={window.NEWS_DATA} />
+
       <FilterBar
         activeCategory={activeCategory}
         onCategoryChange={setActiveCategory}
+        items={window.NEWS_DATA}
       />
 
       <div className="cards-container">
