@@ -77,8 +77,8 @@ function RadarHeader({ searchQuery, onSearchChange, viewMode, onViewChange }) {
         <div className="header-brand">
           <div className="header-logo"><RadarLogo /></div>
           <div className="header-titles">
-            <div className="header-title">L&D Daily AI In IAI</div>
-            <div className="header-subtitle">עדכוני AI שבועיים לצוותי למידה ופיתוח</div>
+            <div className="header-title">רדאר AI להדרכה</div>
+            <div className="header-subtitle">כלי ה-AI שמשנים את עולם הלמידה השבוע</div>
           </div>
         </div>
         <div className="header-left">
