@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<title>בונה באנר — רדאר AI להדרכה</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after { margin:0; padding:0; box-sizing:border-box }
+  body {
+    font-family:'Heebo',sans-serif;
+    background:#f4f7ff;
+    min-height:100vh;
+    padding:30px 20px;
+    color:#0f172a;
+  }
+  .page-title{
+    text-align:center;
+    font-size:1.8rem;
+    font-weight:800;
+    margin-bottom:8px;
+    color:#0f172a;
+  }
+  .page-sub{
+    text-align:center;
+    color:#64748b;
+    margin-bottom:32px;
+    font-size:1rem;
+  }
+  .layout{
+    max-width:1400px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:340px 1fr;
+    gap:24px;
+  }
+  @media(max-width:900px){ .layout{grid-template-columns:1fr} }
+
+  /* ── CONTROLS PANEL ── */
+  .controls{
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    padding:24px;
+    box-shadow:0 2px 10px rgba(10,20,60,.06);
+    height:fit-content;
+    position:sticky;
+    top:20px;
+  }
+  .controls h2{
+    font-size:1rem;
+    font-weight:700;
+    margin-bottom:18px;
+    color:#0f172a;
+    padding-bottom:12px;
+    border-bottom:1px solid #e2e8f0;
+  }
+  .field{margin-bottom:16px}
+  .field label{
+    display:block;
+    font-size:.78rem;
+    font-weight:600;
+    color:#475569;
+    margin-bottom:6px;
+  }
+  .field input[type=text],
+  .field textarea,
+  .field select{
+    width:100%;
+    padding:9px 12px;
+    border:1px solid #e2e8f0;
+    border-radius:8px;
+    font-family:'Heebo',sans-serif;
+    font-size:.85rem;
+    color:#0f172a;
+    background:#fafbfe;
+    direction:rtl;
+  }
+  .field textarea{ min-height:60px; resize:vertical }
+  .field input:focus, .field textarea:focus, .field select:focus{
+    outline:none; border-color:#0a47fd;
+    box-shadow:0 0 0 3px rgba(10,71,253,.12);
+    background:#fff;
+  }
+  .palettes{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+  }
+  .palette-btn{
+    height:38px;
+    border-radius:8px;
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:all .15s;
+    position:relative;
+  }
+  .palette-btn.active{
+    border-color:#0f172a;
+    transform:scale(.95);
+  }
+  .palette-btn:hover{ transform:scale(1.05) }
+  .palette-btn.active:hover{ transform:scale(.95) }
+  .btn-download{
+    width:100%;
+    padding:14px;
+    background:linear-gradient(135deg,#0a47fd,#3b82f6);
+    color:#fff;
+    border:none;
+    border-radius:10px;
+    font-family:'Heebo',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    cursor:pointer;
+    transition:transform .15s, box-shadow .15s;
+    margin-top:8px;
+    box-shadow:0 4px 12px rgba(10,71,253,.30);
+  }
+  .btn-download:hover{
+    transform:translateY(-1px);
+    box-shadow:0 6px 18px rgba(10,71,253,.40);
+  }
+  .btn-download:active{ transform:translateY(0) }
+  .sizes{display:flex;gap:6px;flex-wrap:wrap}
+  .size-btn{
+    flex:1;
+    padding:8px 10px;
+    border:1px solid #e2e8f0;
+    background:#fff;
+    border-radius:8px;
+    font-family:'Heebo',sans-serif;
+    font-size:.75rem;
+    cursor:pointer;
+    font-weight:500;
+    color:#475569;
+    transition:all .15s;
+    min-width:80px;
+  }
+  .size-btn.active{
+    background:#0a47fd;
+    color:#fff;
+    border-color:#0a47fd;
+  }
+
+  /* ── PREVIEW PANEL ── */
+  .preview-wrap{
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    padding:30px;
+    box-shadow:0 2px 10px rgba(10,20,60,.06);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    min-height:520px;
+  }
+  .preview-label{
+    font-size:.78rem;
+    color:#94a3b8;
+    margin-bottom:14px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-weight:600;
+  }
+
+  /* ── THE BANNER ITSELF ── */
+  .banner{
+    width:800px;
+    height:420px;
+    border-radius:20px;
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#fff;
+    box-shadow:0 12px 40px rgba(10,20,60,.18);
+    /* gradient set dynamically */
+  }
+  .banner.size-square{ width:600px; height:600px }
+  .banner.size-story{ width:540px; height:720px }
+  .banner.size-wide{ width:1000px; height:420px }
+
+  .banner::before{
+    content:'';
+    position:absolute;
+    top:-100px; right:-100px;
+    width:300px; height:300px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .banner::after{
+    content:'';
+    position:absolute;
+    bottom:-80px; left:-80px;
+    width:240px; height:240px;
+    background:rgba(255,255,255,.06);
+    border-radius:50%;
+    pointer-events:none;
+  }
+
+  .banner-logo{
+    width:78px; height:78px;
+    background:rgba(255,255,255,.20);
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:40px;
+    margin-bottom:24px;
+    backdrop-filter:blur(10px);
+    position:relative;
+    z-index:1;
+  }
+  .banner-tag{
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.18em;
+    color:rgba(255,255,255,.92);
+    margin-bottom:16px;
+    text-transform:uppercase;
+    position:relative; z-index:1;
+  }
+  .banner-title{
+    font-size:54px;
+    font-weight:900;
+    line-height:1.1;
+    margin-bottom:18px;
+    letter-spacing:-1px;
+    max-width:680px;
+    padding:0 30px;
+    position:relative; z-index:1;
+  }
+  .banner-sub{
+    font-size:20px;
+    font-weight:400;
+    line-height:1.5;
+    max-width:560px;
+    padding:0 30px;
+    opacity:.95;
+    position:relative; z-index:1;
+  }
+  .banner-cta{
+    margin-top:28px;
+    background:#fff;
+    color:#0f172a;
+    padding:14px 36px;
+    border-radius:30px;
+    font-size:17px;
+    font-weight:700;
+    box-shadow:0 6px 20px rgba(0,0,0,.20);
+    position:relative; z-index:1;
+  }
+
+  /* Square + story layouts need smaller text */
+  .banner.size-square .banner-title,
+  .banner.size-story .banner-title{ font-size:44px }
+  .banner.size-square .banner-sub,
+  .banner.size-story .banner-sub{ font-size:18px }
+
+  /* Editable contenteditable styles in preview only (not in download) */
+  [contenteditable="true"]{
+    outline:none;
+    transition:background .2s;
+    border-radius:4px;
+  }
+  [contenteditable="true"]:hover{ background:rgba(255,255,255,.08) }
+  [contenteditable="true"]:focus{ background:rgba(255,255,255,.15) }
+
+  .hint{
+    margin-top:18px;
+    background:#fff3cd;
+    border:1px solid #ffc107;
+    padding:10px 14px;
+    border-radius:8px;
+    color:#664d03;
+    font-size:.85rem;
+    line-height:1.6;
+    max-width:560px;
+    text-align:center;
+  }
+
+  .toolbar-row{
+    display:flex;
+    gap:8px;
+    margin-bottom:14px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .toolbar-row label{ font-size:.78rem; color:#475569; font-weight:600 }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">🎨 בונה באנר — רדאר AI להדרכה</h1>
+<p class="page-sub">ערוך טקסטים, בחר עיצוב, והורד PNG מוכן לOutlook</p>
+
+<div class="layout">
+
+  <!-- ── LEFT CONTROLS PANEL ── -->
+  <div class="controls">
+    <h2>⚙️ הגדרות באנר</h2>
+
+    <div class="field">
+      <label>גודל</label>
+      <div class="sizes">
+        <button class="size-btn active" data-size="default">רחב 800×420</button>
+        <button class="size-btn" data-size="wide">פנורמי 1000×420</button>
+        <button class="size-btn" data-size="square">ריבוע 600×600</button>
+        <button class="size-btn" data-size="story">סטורי 540×720</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>פלטת צבעים</label>
+      <div class="palettes">
+        <button class="palette-btn active" data-gradient="linear-gradient(135deg,#0a47fd 0%,#3b82f6 50%,#06b6d4 100%)" style="background:linear-gradient(135deg,#0a47fd 0%,#3b82f6 50%,#06b6d4 100%)" title="כחול קלאסי"></button>
+        <button class="palette-btn" data-gradient="linear-gradient(135deg,#7c3aed 0%,#a855f7 50%,#ec4899 100%)" style="background:linear-gradient(135deg,#7c3aed 0%,#a855f7 50%,#ec4899 100%)" title="סגול-ורוד"></button>
+        <button class="palette-btn" data-gradient="linear-gradient(135deg,#059669 0%,#10b981 50%,#34d399 100%)" style="background:linear-gradient(135deg,#059669 0%,#10b981 50%,#34d399 100%)" title="ירוק טבע"></button>
+        <button class="palette-btn" data-gradient="linear-gradient(135deg,#d97706 0%,#f59e0b 50%,#fbbf24 100%)" style="background:linear-gradient(135deg,#d97706 0%,#f59e0b 50%,#fbbf24 100%)" title="חום-זהב"></button>
+        <button class="palette-btn" data-gradient="linear-gradient(135deg,#e11d48 0%,#f43f5e 50%,#fb923c 100%)" style="background:linear-gradient(135deg,#e11d48 0%,#f43f5e 50%,#fb923c 100%)" title="אדום שקיעה"></button>
+        <button class="palette-btn" data-gradient="linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0a47fd 100%)" style="background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0a47fd 100%)" title="כהה אלגנטי"></button>
+        <button class="palette-btn" data-gradient="linear-gradient(135deg,#06b6d4 0%,#3b82f6 50%,#8b5cf6 100%)" style="background:linear-gradient(135deg,#06b6d4 0%,#3b82f6 50%,#8b5cf6 100%)" title="טורקיז-סגול"></button>
+        <button class="palette-btn" data-gradient="linear-gradient(135deg,#1e3a8a 0%,#0a47fd 100%)" style="background:linear-gradient(135deg,#1e3a8a 0%,#0a47fd 100%)" title="כחול עומק"></button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>אייקון/אימוג'י</label>
+      <input type="text" id="logoEmoji" value="🛰️" maxlength="4">
+    </div>
+
+    <div class="field">
+      <label>תווית עליונה</label>
+      <input type="text" id="tagText" value="✨ השקה חדשה">
+    </div>
+
+    <div class="field">
+      <label>כותרת ראשית</label>
+      <input type="text" id="titleText" value="רדאר AI להדרכה">
+    </div>
+
+    <div class="field">
+      <label>תת-כותרת</label>
+      <textarea id="subText">כלי ה-AI שמשנים את עולם הלמידה — מעודכן כל שבוע</textarea>
+    </div>
+
+    <div class="field">
+      <label>טקסט הכפתור (אופציונלי)</label>
+      <input type="text" id="ctaText" value="🚀 כניסה לאתר">
+    </div>
+
+    <div class="field">
+      <label>
+        <input type="checkbox" id="showCta" checked style="margin-left:6px">
+        הצג כפתור
+      </label>
+    </div>
+
+    <button class="btn-download" onclick="downloadPNG()">
+      📥 הורד PNG
+    </button>
+
+    <p style="font-size:.75rem;color:#94a3b8;margin-top:10px;text-align:center;line-height:1.5">
+      טיפ: אפשר לערוך טקסטים גם ישירות בבאנר
+    </p>
+  </div>
+
+  <!-- ── RIGHT PREVIEW PANEL ── -->
+  <div class="preview-wrap">
+    <div class="preview-label">תצוגה מקדימה — לחץ על טקסט לעריכה ישירה</div>
+
+    <div class="banner" id="banner" style="background:linear-gradient(135deg,#0a47fd 0%,#3b82f6 50%,#06b6d4 100%)">
+      <div class="banner-logo" id="logoBox">🛰️</div>
+      <div class="banner-tag" contenteditable="true" id="tagEdit">✨ השקה חדשה</div>
+      <div class="banner-title" contenteditable="true" id="titleEdit">רדאר AI להדרכה</div>
+      <div class="banner-sub" contenteditable="true" id="subEdit">כלי ה-AI שמשנים את עולם הלמידה — מעודכן כל שבוע</div>
+      <div class="banner-cta" contenteditable="true" id="ctaEdit">🚀 כניסה לאתר</div>
+    </div>
+
+    <div class="hint">
+      💡 לאחר ההורדה: ב-Outlook → New Email → Insert → Pictures → בחר ב-PNG.<br>
+      לחיצה ימנית על התמונה → Link → הדבק <b>https://iaiacademy2-bit.github.io/ai-daily-radar/</b>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ── Sync controls → banner ──
+  const logoEmoji = document.getElementById('logoEmoji');
+  const tagText   = document.getElementById('tagText');
+  const titleText = document.getElementById('titleText');
+  const subText   = document.getElementById('subText');
+  const ctaText   = document.getElementById('ctaText');
+  const showCta   = document.getElementById('showCta');
+
+  const logoBox   = document.getElementById('logoBox');
+  const tagEdit   = document.getElementById('tagEdit');
+  const titleEdit = document.getElementById('titleEdit');
+  const subEdit   = document.getElementById('subEdit');
+  const ctaEdit   = document.getElementById('ctaEdit');
+  const banner    = document.getElementById('banner');
+
+  // Controls → preview
+  logoEmoji.oninput = () => logoBox.textContent = logoEmoji.value;
+  tagText.oninput   = () => tagEdit.textContent = tagText.value;
+  titleText.oninput = () => titleEdit.textContent = titleText.value;
+  subText.oninput   = () => subEdit.textContent = subText.value;
+  ctaText.oninput   = () => ctaEdit.textContent = ctaText.value;
+  showCta.onchange  = () => ctaEdit.style.display = showCta.checked ? '' : 'none';
+
+  // Preview (contenteditable) → controls (keep in sync)
+  tagEdit.oninput   = () => tagText.value   = tagEdit.textContent;
+  titleEdit.oninput = () => titleText.value = titleEdit.textContent;
+  subEdit.oninput   = () => subText.value   = subEdit.textContent;
+  ctaEdit.oninput   = () => ctaText.value   = ctaEdit.textContent;
+
+  // ── Palette selection ──
+  document.querySelectorAll('.palette-btn').forEach(btn => {
+    btn.onclick = () => {
+      document.querySelectorAll('.palette-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      banner.style.background = btn.dataset.gradient;
+    };
+  });
+
+  // ── Size selection ──
+  document.querySelectorAll('.size-btn').forEach(btn => {
+    btn.onclick = () => {
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      banner.classList.remove('size-square','size-story','size-wide');
+      if (btn.dataset.size !== 'default') banner.classList.add('size-' + btn.dataset.size);
+    };
+  });
+
+  // ── Download PNG ──
+  function downloadPNG(){
+    // Remove focus from contenteditable so no caret in screenshot
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+
+    html2canvas(banner, {
+      backgroundColor: null,
+      scale: 2,  // retina quality
+      logging: false,
+      useCORS: true,
+    }).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'banner-radar-ai-' + Date.now() + '.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }).catch(err => {
+      alert('שגיאה ביצירת התמונה: ' + err.message);
+    });
+  }
+</script>
+
+</body>
+</html>
