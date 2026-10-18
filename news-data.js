@@ -7,35 +7,13 @@ const CATEGORIES = {
   language:  { name: 'שפה ותרגום',          bg: '#fff1f2', text: '#e11d48' }
 };
 
-// Weekly digest — auto-generated 2026-10-11 (articles from last 7 days only)
+// Weekly digest — auto-generated 2026-10-18 (articles from last 7 days only)
 const NEWS_DATA = [
   {
-    "id": 2,
-    "headline": "וואו: ChatGPT מציג תשובות ויזואליות עם תמונות וגרפים",
-    "explanation": "העדכון החדש של ChatGPT, המבוסס על מנוע GPT-6, משדרג את התשובות מטקסט בלבד לתשובות עשירות ויזואלית. הוא כולל כעת תמונות, גרפים, טבלאות וכפתורים אינטראקטיביים ישירות בתוך הצ'אט.",
-    "impact": "מעצבת הדרכה שמכינה מצגת על ניהול זמן יכולה לבקש מ-ChatGPT להציג את 'מטריצת אייזנהאואר', ולקבל מיד תרשים ויזואלי מוכן לשילוב במצגת, במקום רק הסבר טקסטואלי.",
-    "categoryKey": "ai_models",
-    "source": "MacRumors",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5aWlRqTFkxNlBENTZYRC0zOFF5Zjg4b3BxR2syaTRtY1NfbTlRQXhkbkhKQWppRXRTUGFQZmM5SGJmOHJaRXRYQlN6ZFlpOWRVWlB2em5IZ1BXU19kQ01iQkVrWEdXNnRLVWZLNg?oc=5",
-    "timeAgo": "השבוע",
-    "trending": true
-  },
-  {
-    "id": 14,
-    "headline": "גוגל משחררת 'סוכן AI' שמבצע משימות מורכבות במקומך",
-    "explanation": "הכירו את Gemini Agent, כלי חדש מגוגל שיכול לבצע משימות ארוכות ומורכבות באופן עצמאי. הוא מקבל גישה משלו למייל, ליומן ולדרייב כדי לתכנן, לארגן ולהוציא לפועל פרויקטים שלמים.",
-    "impact": "מנהלת הדרכה יכולה להטיל על ה-Agent לארגן יום עיון: הוא ימצא תאריך פנוי ביומנים של כולם, ישלח הזמנות, יזמין קייטרינג ויתאם עם המרצים, תוך עדכון שוטף על ההתקדמות.",
-    "categoryKey": "ai_models",
-    "source": "VentureBeat",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxNU0ZZSnZNWFdoU0p6bDNHb0R3Rk8xTGdSTUJfSjVlWTVhSmFQaWFocVVLTUFISlljVzVqTE9jazlBTVpiZENFWVFaWFdBYUpQME43blNrY2ljWGpJVi0xMVpMelRMck9Eb082d0dmZ2dva3NUV0hXNXJROUdSR0Roak1kTzFYVU5LQ1dhdk83NE1CeW9pWGV6MHFXbVBjTTM1N3VKUkpoc0dhVHA0R2FuaVVqU3JJX0lLMUxWdy1aTHJ6NFVDLWpycVh1WjFMXy1VRlI3dWRWSmFxUmRIelB5M0p5RndhWV9HRjFnZ2VOT1dfeXpK?oc=5",
-    "timeAgo": "השבוע",
-    "trending": true
-  },
-  {
-    "id": 26,
-    "headline": "הדור הבא כבר כאן: OpenAI חושפת את GPT-6 בשתי גרסאות חדשות",
-    "explanation": "חברת OpenAI הכריזה על מנוע ה-AI החדש שלה, GPT-6, שמגיע בשתי גרסאות: Sol (שמש) ו-Luna (ירח). הגרסאות החדשות מבטיחות יכולות הבנה, יצירתיות ופתרון בעיות ברמה שטרם נראתה.",
-    "impact": "במקום לבזבז שעות על סיעור מוחות, צוות פיתוח הדרכה יכול להשתמש ב-GPT-6 כדי לייצר תוך דקות שלוש מתודולוגיות הדרכה שונות וחדשניות לקורס 'מבוא לאבטחת מידע'.",
+    "id": 1,
+    "headline": "OpenAI חושפת את GPT-6: שני מודלים חדשים, Sol ו-Luna, משנים את כללי המשחק",
+    "explanation": "הגרסה החדשה והעוצמתית ביותר של ChatGPT הגיעה, עם שני מודלים ייעודיים. Sol מתמחה ביצירתיות ורעיונות חדשים, בעוד Luna מתמקדת בניתוח נתונים ודיוק לוגי.",
+    "impact": "מעצבי למידה יכולים להשתמש ב-Sol כדי לקבל רעיונות פורצי דרך למשחוק קורסים, וב-Luna כדי לנתח משובים של עובדים ולזהות פערים בידע בצורה מדויקת.",
     "categoryKey": "ai_models",
     "source": "OpenAI",
     "sourceUrl": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB4SldKWWgzNDExSThTZW9MRTQ5WHE3VFRZMl9oSjIzaVhuZEZaY1ZSUTFxZTJFaFpUanlncTQySUg5SlRGVnNkQXZ0S3IxLWJScXNkLXY2Z3Jzbk5WR0UwSFp0NmUxN3c?oc=5",
@@ -43,167 +21,189 @@ const NEWS_DATA = [
     "trending": true
   },
   {
-    "id": 4,
-    "headline": "פיצ'ר הפגישות החדש של ChatGPT יסכם לכם כל שיחה אוטומטית",
-    "explanation": "ChatGPT השיק יכולת חדשה המתחברת לפגישות אונליין, מאזינה לדיון, ומפיקה סיכום אוטומטי. הכלי מזהה משימות, החלטות ונקודות מפתח, ומארגן אותן במסמך ברור.",
-    "impact": "אחרי פגישת אפיון ארוכה עם מנהל מהשטח, מפתח ההדרכה יקבל סיכום מיידי עם כל הדרישות והצרכים שעלו. זה חוסך את הצורך לרשום הערות ומבטיח ששום דבר חשוב לא יתפספס.",
-    "categoryKey": "docs",
-    "source": "Inc.com",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMixAFBVV95cUxONldEaHl4RF81RE9QcnlxTkFOUXNmTW1UQTk2MVFXVTZmUFRnTVF2dWN2M1VFcl9vUjJtYmFiRlhyeWhFZmFjdnN2aGwxVjlmRHdFYXl4STlWZTdSQVFxR2N3X1hUdS1wenVaMkxWNEtUX1pxZk9zRXhDYkROOUU1NjRwRDNwOThxWXBkM2JYV0FlTnE2YU9QcEZVcG1sbllSbG1GdlctMXIwMWczT0M0djVCQ2l3SWRvaUhfNF9HMFpYdjVK?oc=5",
+    "id": 19,
+    "headline": "מיקרוסופט משדרגת את Copilot: בונים סוכני AI אוטונומיים שינהלו תהליכים עבורכם",
+    "explanation": "Copilot Studio החדש מאפשר ליצור 'סוכנים' דיגיטליים שמבצעים משימות מורכבות באופן עצמאי ומתמשך. זה הרבה יותר מצ'אט, אלו ממש עובדים וירטואליים למשימות רוטיניות.",
+    "impact": "מנהלת הדרכה יכולה לבנות סוכן AI שבודק אוטומטית השלמת קורסי חובה, שולח תזכורות מותאמות אישית למנהלים ולעובדים, ומפיק דוח התקדמות שבועי ללא מגע יד אדם.",
+    "categoryKey": "learning",
+    "source": "Microsoft",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMihAJBVV95cUxNMWJLZjF0emdwNkZQekdCZFdUbnI2eUFXc3FpYVBpZHpYZ0t2czdmUmcxOWQtWWZaM3BzS1pSdWJKVnRTVTRRazJudnJRQmhLWGhXeEwzYkhvNmJaXzVnb3VRUWdtNlB6LWRLZlRBQWFfVUdBVGFEN3p2OEdjWklEb0Z1U0JFbWdpOENEYU5UMkpSem5VcVNqSHJmSTFlQkpaZkhYSGZ2RDJyN1JEY0MzVEtJYlVabTVwZ095Z2dGazRka2lZREktbVd2RXJLNkhIM3hKSlc0UkhDYm1aSTRlU1MzYXVvZG14bTZ4WE9UTVA3X21GR2RfblNMZDFSeThTR054eg?oc=5",
     "timeAgo": "השבוע",
-    "trending": false
+    "trending": true
   },
   {
-    "id": 23,
-    "headline": "סוף סוף: Copilot ב-Word מראה מאיפה הוא לקח את המידע",
-    "explanation": "מיקרוסופט עדכנה את Copilot ב-Word, וכעת הוא מוסיף ציטוטים והפניות למקורות המידע שלו. כשאתם מבקשים ממנו לכתוב טקסט, תוכלו לראות בדיוק על אילו מסמכים או אתרים הוא התבסס.",
-    "impact": "כשמפתחים לומדה על נהלי בטיחות חדשים בארגון, אפשר להיות בטוחים שהתוכן ש-Copilot מייצר מבוסס על המסמך הרשמי והמעודכן ביותר, ולא על מידע ישן או לא רלוונטי.",
-    "categoryKey": "docs",
-    "source": "Windows Central",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOd25OWVhibjI2Z0J5ZVNXd3NkVGhjQ0hrNFNFR2hibU9HQmJUamFfcDBqMkYtc1lQY0QxbDZBcGN4RXBQTE5rZkJ0dW1fUHNId0hVTlJsTllibVktWjFsREhqTmlYc2Y3MENISW42TXZiM1ZvaXp4Vkd4TmxZTEY2YnVwQ3VUQjczeEwwcS1QTG9CeW9FZEVzUmtiYTlscWI5cGN4YjBVa1EtNXFyTlRXU1pRc1otdnZud2Fyek96N1dfYkFpMnNSVEF1TFBMVVBsdTU0NFVSa3U0dw?oc=5",
-    "timeAgo": "השבוע",
-    "trending": false
-  },
-  {
-    "id": 45,
-    "headline": "כלי חדש יוצר סרטונים עם סאונד ותנועה מסונכרנים באופן מושלם",
-    "explanation": "Kandinsky 6.0 הוא כלי קוד פתוח חדש שמייצר סרטונים קצרים מטקסט, ודואג שהסאונד יתאים בדיוק לתנועה. למשל, אם תכתבו 'גלים מתנפצים על החוף', תשמעו את רעש הגלים מסונכרן עם התמונה.",
-    "impact": "מדריך שיוצר סרטון הדרכה על 'איך להשתמש במטף כיבוי אש' יוכל להוסיף קטע וידאו קצר של אש עם סאונד ריאליסטי של פצפוצים, מה שיהפוך את הסרטון לממחיש ומרתק הרבה יותר.",
-    "categoryKey": "media",
-    "source": "Gearbrain",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPRGYxeVdUQ2pxWU5YTndmWVZMYV81cjliMHFMd0ZEcHdzUW5BREpqSjE0bzA4cUM2ZVRUYkw0c2taWHJUS2RWMmNJa3lBcnhLSTlKYktkTXV0bDA3bUdJX3hXcGFkVUd6blhLQkJBdFdFY2gzNVBYTi05TGZueW5XX0p2Y2dSZ9IBhAFBVV95cUxOMjFoU201bU80NHBzVHpCeGdQUjIyWk1PUktneDNDbklIdGpObnFZWG5hekxkdkRTbGlRWGt1bExEMVdHaWJZVWNJQnpUY2FKVFpvWldWS1VBcWhWTS1oaTZaTURjazNBNmJIMnVwa1NrNEN4NGNGcnpEWGgxNmpyWVRKY3o?oc=5",
-    "timeAgo": "אתמול",
-    "trending": false
-  },
-  {
-    "id": 42,
-    "headline": "רוצים ליצור סרטון עם דמות וירטואלית? זה הכלי בשבילכם",
-    "explanation": "כלי חדש ליצירת סרטוני אוואטר מאפשר להפיק סרטוני הדרכה עם דמויות וירטואליות שנראות וזזות באופן טבעי. המטרה היא ליצור סרטונים שנראים מקצועיים גם כשאין מנחה אמיתי מול המצלמה.",
-    "impact": "צוות L&D שצריך להפיק סדרת סרטונים קצרים על תאימות (Compliance) יכול להשתמש באוואטר קבוע שיופיע בכל הסרטונים, וליצור מיתוג אחיד וזכיר לסדרת ההדרכות.",
-    "categoryKey": "media",
-    "source": "Greater Milwaukee Today",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQVTE4WEowZ296OWVQVHM3aUhKM3RMQXAwb3lEOGwzVFNveXZmNVE4OHQxVVluWDdObm9PVG91TTRJMksyLXdsdzlXc3AzZlIzb3pNWVMtNXR3aHR4UGRRRUFQNHdhYUlFdmx2LTlnek5nVkxqamdkZEJEWHdJUUFqSHVvYzlIdktaQVpMNEJ0WmI3djRrcnRIYzdxV1N6REF6SkxEYkZrdDExb3VwWWNlc2xsUS1kbndKUTc5Q0hMYXM3TVpjOXVHSUtnZTVud05fNG5DdU5pR1JfMWwtOVJJajF0eUwtQWdr?oc=5",
-    "timeAgo": "היום",
-    "trending": false
-  },
-  {
-    "id": 37,
-    "headline": "Canva משיקה חבילת ProSuite עם כלי AI מתקדמים למעצבים",
-    "explanation": "קאנבה השיקה את ProSuite, חבילה חדשה המאחדת את כל כלי העיצוב וה-AI המתקדמים שלה תחת קורת גג אחת. החבילה נועדה לתת למעצבים, גם כאלה ללא ניסיון, יכולות של סטודיו מקצועי.",
-    "impact": "מעצב למידה יכול כעת להשתמש ב-ProSuite כדי ליצור ערכה גרפית שלמה לקורס חדש – כולל לוגו, תבניות למצגות, איורים ייחודיים וסרטוני אנימציה קצרים – והכל באותו סגנון עיצובי.",
-    "categoryKey": "media",
-    "source": "Small Business Trends",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPNE9LNXQ3OHRpbWs0N0ZtNm1id0tkUHIwTUI2OE5UM3ZuQXRjRkhrbU9zSnZ1NmlSQkx4STloMlkxcmtHOGNkeHd0Y2Y2T3pjV1NneTczMkUxaWJId1YwZk9vSjVETWxjOWpkRTBfTFVjWGl0dWFQR09JTTh4UWVRTDlfTlg2YXNoZU54OWQwbmh6dTltYkFTa1p3?oc=5",
-    "timeAgo": "היום",
-    "trending": false
-  },
-  {
-    "id": 8,
-    "headline": "קלוד מציג 'כלים אוטונומיים' לארגונים גדולים",
-    "explanation": "חברת Anthropic, המפתחת של Claude, השיקה סט כלים חדש לארגונים. הכלים מאפשרים ל-Claude לבצע משימות מורכבות באופן עצמאי, כמו ניתוח דוחות כספיים או ניהול פרויקטים קטנים.",
-    "impact": "מנהל צוות פיתוח הדרכה יכול לבקש מ-Claude לנתח את כל משובי ההדרכה מהרבעון האחרון, לזהות את הנושאים המרכזיים שעלו, ולהציע תוכנית עבודה לשיפור הקורסים הפופולריים ביותר.",
+    "id": 3,
+    "headline": "שליטה מלאה על התשובות: ל-ChatGPT 6 יש כפתור חדש לקביעת עומק החשיבה",
+    "explanation": "פיצ'ר חדש בשם 'Reasoning Slider' מאפשר לקבוע כמה 'עמוק' ה-AI יחשוב לפני שהוא עונה. אפשר לבחור בין תשובה מהירה וישירה לתשובה מפורטת ומנומקת.",
+    "impact": "כשמפתחים תרגול סימולציה למנהלים, אפשר להשתמש במצב ה'עמוק' כדי לקבל תרחישים מורכבים עם ניואנסים, ובמצב ה'מהיר' כדי לייצר שאלות קצרות לבוחן ידע.",
     "categoryKey": "ai_models",
-    "source": "Stocktwits",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQYzBTVFhtYVNkNUMtcWZYYkV2VUhGcEV6WTB6N2htWnFJN3dibGYyUU1TOU0yUy1EWEhpampTc0c1ZWk5b3Z2a1o3b0NBTFFQenNrdkppQ3N3U0RFY3kzSElRR0xVbER3YmtRTkVIU0VldV9GSnlfbG96Zm5ORWpuU295Z1VFVE9yVnB5VlR0VDA1SlNyT1ZGdG5fTXl3VGktWVdLemMzS3NrdXU0NUJRTk05ZWZUQzRjZ1ZNSEVZOGc1RVVRQ1M1cmVkZDRkSGhxZDVFSXZKb3VFLW8yT0E?oc=5",
+    "source": "Geeky Gadgets",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9uU0Q1NWRqRG9TYzlYSm1qSndyb1VydGtCOExfNktBTk9UbkozOUhHZjRxSGY1X0M2N21XWHdkY3RyWktKNTVpS2VOQU9wZFYzbEdxcnBmSQ?oc=5",
     "timeAgo": "השבוע",
-    "trending": false
+    "trending": true
   },
   {
-    "id": 11,
-    "headline": "גוגל מכריזה על Gemini Agent: 'הסוכן האוניברסלי לעבודה'",
-    "explanation": "גוגל הציגה את החזון שלה לעתיד העבודה עם Gemini Agent. זהו לא רק צ'אט, אלא 'סוכן' שמבין את המטרות שלך ויכול לפעול באופן יזום בתוך כלי Google Workspace כדי להשלים משימות.",
-    "impact": "מי שאחראי על Onboarding בארגון יוכל להגדיר ל-Agent תהליך קליטה לעובד חדש. ה-Agent ייצור אוטומטית חשבונות, ישלח מייל ברוכים הבאים עם חומרי קריאה, ויקבע פגישות היכרות ביומן.",
-    "categoryKey": "ai_models",
-    "source": "9to5Google",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMibEFVX3lxTE10b3pzV0h6VjhSd0d2bUpoaktyYmVoa1ozNW1ZbE15dUY0MkltSlhta3hDMjFTM3BVdk9UUW9mMDJMWkZMbVpxeFJsV3RYRGQ3eG82U29YVTItVXp1Zko5cTZWdGp5SkJhOHdfUQ?oc=5",
+    "id": 14,
+    "headline": "גוגל משיקה סוכן Gemini לעסקים: אוטומציה של תהליכים ארגוניים בקלות",
+    "explanation": "גוגל השיקה גרסה עסקית של Gemini שמתחברת למערכות הארגוניות. הסוכן החדש יכול לבצע משימות כמו ניתוח דוחות, תיאום פגישות וניהול פרויקטים באופן אוטומטי.",
+    "impact": "צוות L&D יכול להשתמש בסוכן כדי לנתח את נתוני ה-LMS, לזהות עובדים עם ביצועים נמוכים ולהציע להם אוטומטית קורסים רלוונטיים לשיפור.",
+    "categoryKey": "learning",
+    "source": "ALM Corp",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBtaVNjRWxBTVpkOTIxVnFReHBLd0pvLWU5bnVPWmdiZnZZX25pYVVwdVZKUVNGN014YUsyYzBWXzZJQjNfalk4clF3YUp4Qm02VmcxRXBkRnA1eWRFY2Y5UXB3OE5hX0tFTWN5ZVA2NHo1bUdRR0lV?oc=5",
     "timeAgo": "השבוע",
     "trending": false
   },
   {
     "id": 21,
-    "headline": "מיקרוסופט מאפשרת לבנות אפליקציות וסוכני AI בקלות ב-Copilot Studio",
-    "explanation": "העדכון החדש של Copilot Studio מאפשר לכל אחד, גם ללא ידע בתכנות, לבנות בוטים וסוכני AI מותאמים אישית. ניתן לחבר אותם למערכות הארגוניות וליצור תהליכי עבודה אוטומטיים.",
-    "impact": "צוות הדרכה יכול לבנות 'בוט תמיכה' שיענה על שאלות נפוצות של עובדים לגבי מערכת ה-LMS. הבוט יוכל להדריך אותם איך נרשמים לקורס או איך מאתרים תעודת סיום.",
-    "categoryKey": "learning",
-    "source": "Microsoft",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxPXzRZZ01GUk9xVkNDV2E3c2ZSNkxOUjF3WWw1NVl1dlZaSTdWM2FSU25CbWxUaHVkcHA0aXZuRHpGbVk2N1BYRlA2anJTa2JjNWpSZzVVT0w0NGJqYXgyWEpHNXVwM1NhYXNBa0NaNnpYT0M2akNWUnp2emVaSUdIVERBeWszVU5hcjROU0kxWktrSVhiUm00Ukt3RjREeC1nTEJFRFZLVnQ1endrTWxyQTk3UWQ1T0VxYU9kdUY0ZW9KMTJfYVRia3hzcU1kckdHUE1DSlpEYXBhTllIek41RkRuOXl1ZWhFWEM0SG9pOXBFNVBGTmc?oc=5",
-    "timeAgo": "השבוע",
-    "trending": false
-  },
-  {
-    "id": 34,
-    "headline": "כלי חדש מלמד AI איך להימנע מ'הזיות' ומידע שגוי",
-    "explanation": "חברת Hotshot השיקה קורס ייעודי שמטרתו לאמן בינה מלאכותית כיצד להימנע מהמצאת עובדות או 'הזיות'. בנוסף, חברת Ironclad השיקה סוכן AI שמנתח חוזים באופן אוטומטי.",
-    "impact": "מפתח הדרכה שמשתמש ב-AI כדי ליצור שאלות למבחן מסכם, יכול להיות רגוע יותר שהשאלות והתשובות שהמערכת מייצרת יהיו מדויקות ומבוססות על חומר הלימוד, ולא יכילו טעויות עובדתיות.",
-    "categoryKey": "learning",
-    "source": "Law.com",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNUXNhN0h3V0VCaF95Zkl6ZzF1YnlzVVItdGpXb19aaEZnOWU3Z21DdHlKaEhuS3ZENmtMLUF6Y182M2JXWWY3SEdCS3Q2WVBGMWVJMjRhb09nYmJZYVcxakZrR2t3NlNXQWhTS0Z6NU1qTlVhbnNuVGdKWktxTk9YOEw2eHBLLWh6Z05HMWRMblB5amVTZ1B6UlFweDFYb1p1dWd4dnlObDJnbVU1c0UyZV9nYXlqZ1A2V1BtbERBLXEzUlhNVWZBcmlvZldoUlEzVnZNaQ?oc=5",
-    "timeAgo": "אתמול",
-    "trending": false
-  },
-  {
-    "id": 1,
-    "headline": "OpenAI מתחילה להציג פרסומות ויזואליות בכלי יצירת התמונות שלה",
-    "explanation": "חברת OpenAI הודיעה שתתחיל לשלב פרסומות ממומנות בתוך כלי יצירת התמונות שלה, בדומה לתוצאות ממומנות במנועי חיפוש. הפרסומות יופיעו לצד התמונות שהמשתמשים יוצרים.",
-    "impact": "זהו שינוי מעניין שמראה את הכיוון המסחרי של הכלים. עבור צוותי הדרכה, זה אומר שבעתיד ייתכן שיוכלו לקדם הדרכות או קורסים באמצעות פרסום ממוקד בתוך פלטפורמות AI.",
-    "categoryKey": "ai_models",
-    "source": "OpenAI",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMickFVX3lxTFBrTGpFWUV6LXBPamVmUVVuZktVbi13bVZaVUg3NEdQWjdjcXZpNXVBNDNlRGIzRmV0ZUlBYTIzeXV1VmZBMXh0NnpkTGpCYmJrUFFhanBwY0lKVFctYWNLLUNpRzdtOXktbVVFa0x6Ry1zQQ?oc=5",
+    "headline": "סוף סוף: Copilot מקבל את כל היכולות של Office באפליקציה אחת",
+    "explanation": "אפליקציית Copilot החדשה משלבת את כל כלי ה-AI של Word, Excel ו-PowerPoint במקום אחד. מעכשיו אפשר ליצור מסמך, לנתח נתונים ולבנות מצגת בלי לעבור בין תוכנות.",
+    "impact": "במקום לבזבז שעות על עיצוב מצגת הדרכה, אפשר פשוט להזין ל-Copilot את סיכום ההדרכה מ-Word והוא ייצר מצגת מעוצבת ומוכנה להצגה תוך דקות.",
+    "categoryKey": "docs",
+    "source": "TechRadar",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxPRzB3Qm1GWXRzenBodjZoX1BXeFZid2kyMF9NMW9hXzJsWlhqZTlrekVNdno4UkNsU2p3YmtjYjlKR0JiUk9DRmVPMzRBUEQ5ZTFPVXZleHZoNGp6Y0hPUWY3Z3Mtb0w1WEFiMkRYRlFlRTdIYkZsYVdYbXcxODNxV1IwNXpqX0xPdkt5WXZpQWlYQl9nV0tJZHpEUE5QcV9WQjRtQUdtc0NISzdBcTM5OGh5T280N3lKbkRucGltQWNZX2lqSGpqNmY5ckFuRmFKbTE0SGIzQkdpel9WeFlZZDRGZEV0U0pNN0JSNURB?oc=5",
     "timeAgo": "השבוע",
     "trending": false
   },
   {
     "id": 44,
-    "headline": "רוצים להרוויח כסף מדמויות AI? פלטפורמה חדשה מאפשרת לכם",
-    "explanation": "חברת Kinku השיקה כלי ליצירת תמונות וסרטונים המאפשר למשתמשים לבנות 'דמויות AI' עם אישיות וסיפור רקע. היוצרים יכולים לאחר מכן לייצר הכנסה מהדמויות שיצרו.",
-    "impact": "מדריך שמתמחה בתחום מסוים, כמו מכירות, יכול ליצור 'מאמן מכירות וירטואלי' שיספק טיפים ותרגולים. עובדים אחרים בארגון יוכלו 'לשוחח' עם הדמות כדי להתאמן לפני פגישה חשובה.",
+    "headline": "אמזון השיקה כלי AI שיוצר מצגות עסקיות באופן אוטומטי",
+    "explanation": "הכלי החדש, Bedrock AgentCore, מאפשר ליצור מצגות שלמות על ידי תיאור התוכן הרצוי בשפה פשוטה. הוא מנתח את הבקשה, אוסף מידע רלוונטי ומעצב את השקפים.",
+    "impact": "מנהל מוצר שצריך להעביר הדרכה על פיצ'ר חדש יכול לבקש מהכלי \"צור מצגת השקה לפיצ'ר X\", והוא יקבל מצגת מקצועית עם הסברים, תמונות ונתונים.",
     "categoryKey": "media",
-    "source": "PR.com",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE03VXF4OTVfTDYzT0R4aTJGN0V4NjBrTFg2VERKa181c21VOFBodzRXQ3NkLTktclBJUXY2WEJzMEtKVU5mb2t0R080YUxoNlhU?oc=5",
-    "timeAgo": "אתמול",
+    "source": "Amazon Web Services (AWS)",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOd3BUVi1zNDhoUXpwTTE4ZU9LY0NVUV92d0c2WW5ud3VkbUxjT0FHWTIwX25kRTZfTWxWQ2pVbnNoNnQtckkwVHNIXzZRWGxtRF93VWYxeEtneWdxcFU0eHhKRzA3SWM5cGpTR19yR2E5b2lnU0ZVQ1J2X0NEMlI0UkVIdGU3ajYzLV85OU54OXcwMVFvYVdZeE1oVHBrTzJi?oc=5",
+    "timeAgo": "השבוע",
+    "trending": false
+  },
+  {
+    "id": 39,
+    "headline": "כלי חדש מאפשר ליצור סרטונים ארוכים ועקביים בעזרת AI",
+    "explanation": "Seedance 3.0 הוא כלי ליצירת וידאו ששומר על עקביות של דמויות וסגנון לאורך סרטונים ארוכים. זה פותר את אחת הבעיות הגדולות של מחוללי וידאו כיום.",
+    "impact": "צוות הדרכה שמפתח סדרת סרטוני מיקרו-למידה יכול להשתמש בכלי כדי ליצור דמות מדריכה וירטואלית שתופיע בכל הסרטונים ותשמור על מראה וקול אחידים.",
+    "categoryKey": "media",
+    "source": "Startup Fortune",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPakRFMzJxSTJ3SzdFQTA0YmdnRlRQT1dBWnN4ZHZlcHF1aHdnUklfYkF6U0ZFUTNoblhGRkVjbHFTclFHSjljdlZKSkJvbWJfdFhhdlFiY2g2aEE4Q0pCbGFmQlRYVHNZU3hKMzEySVp5T2ZQZjJsZndZT3dGSFR3NU9SbXdrcDZOTUx3Rlk5U2NyYk5jNjlJ?oc=5",
+    "timeAgo": "השבוע",
+    "trending": false
+  },
+  {
+    "id": 33,
+    "headline": "מדריך חדש: כך תשתמשו בכלי ה-AI של Canva ליצירת תוכן לרשתות חברתיות",
+    "explanation": "Metricool פרסמו מדריך מפורט שמסביר צעד-אחר-צעד איך להשתמש ביכולות ה-AI החדשות של Canva. המדריך מכסה יצירת תמונות, כתיבת טקסטים ותזמון פוסטים.",
+    "impact": "מי שאחראי על קידום קורסים פנימיים בארגון יכול להשתמש במדריך כדי לייצר קמפיין ויזואלי מרשים תוך דקות, במקום להעסיק מעצב גרפי חיצוני.",
+    "categoryKey": "media",
+    "source": "Metricool",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9ESEtuLWNaejk5b3dzYnk1N3pKUDB4eFYzekVpbEhEbjRVUWQ5MWxWMzA2cjdNSF9KUmRFWFNlZ20yYTZSalFfNUFRVkw5TzRWNWRPWkdTOTdmT25iczVGSFluajBEM3h5VUFTVUlFQ3o4aGhKMzU1ZQ?oc=5",
+    "timeAgo": "השבוע",
+    "trending": false
+  },
+  {
+    "id": 2,
+    "headline": "לא צריך מתכנת: מדריך חדש מראה איך לבנות אתר שלם עם ChatGPT",
+    "explanation": "המדריך המעשי של Hostinger מפרט איך כל אחד יכול לבנות אתר אינטרנט פונקציונלי מאפס. התהליך כולל יצירת קוד, עיצוב וכתיבת תוכן, הכל בעזרת שיחה עם הבוט.",
+    "impact": "מחלקת הדרכה יכולה כעת לבנות מיני-סייט ייעודי לקורס דגל חדש, כולל עמוד נחיתה, מערכת רישום ודפי מידע, בלי לבקש עזרה מצוות הפיתוח.",
+    "categoryKey": "learning",
+    "source": "Hostinger",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1ONkhsZG5SeEhqZ3lEeUVCZE9iNWVpNlV1dElqNHlxRC1GUU45dklZeS1NVkpsQ05BZEl6eWJkSzVmXzhZbUpSRlgwY0Z1ZXpRQ2szV0pWcmdjWTlBVHNHM0FyQ1pvNnVZOERiMmVRZlo?oc=5",
+    "timeAgo": "השבוע",
+    "trending": false
+  },
+  {
+    "id": 4,
+    "headline": "טיפ למשתמשי מק: כך תחליפו את החיפוש הרגיל בשאילתה ישירה ל-ChatGPT",
+    "explanation": "מדריך קצר מראה איך להגדיר קיצור דרך במערכת ההפעלה של אפל (MacOS). במקום לפתוח את הדפדפן, אפשר לשאול שאלות את ChatGPT ישירות משורת החיפוש.",
+    "impact": "זהו שדרוג פרודוקטיביות אדיר למפתחי הדרכה. כשצריך לבדוק עובדה מהירה או לקבל ניסוח חלופי למשפט, התשובה נמצאת במרחק הקלדה אחת, בלי לצאת מהמסמך.",
+    "categoryKey": "language",
+    "source": "OS X Daily",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOOVN0aFRDV2VxVnhVQjBacHB6cm5DOTNneU9zWWxqSUgtX3FLX09KUVhrS2xub3VENjhKR19nOHJSdXMtWW1mb0lvN3lXbS1OYnFONFh3dHdlREhjVEMzOHdOTmpwNFBKYzZDLWw0M3kyMWxEZTZIMlFHS1BrLTBEYzJCc0dWRU9tWU8yaHdnZ1BSYjZV?oc=5",
+    "timeAgo": "השבוע",
+    "trending": false
+  },
+  {
+    "id": 9,
+    "headline": "מפתח השתמש ב-Claude AI כדי לבנות 7 חלופות חינמיות לכלי אדובי",
+    "explanation": "מתכנת הראה כיצד השתמש בצ'אט של Anthropic כדי לכתוב קוד לשבע אפליקציות. התוצאה היא כלים חינמיים שמחקים פונקציות של תוכנות יקרות כמו פוטושופ ואילוסטרייטור.",
+    "impact": "זה מראה שאפשר להשתמש בכלי AI לא רק ליצירת תוכן, אלא גם ליצירת כלי עבודה. צוות הדרכה יכול לבנות לעצמו כלי פנימי קטן, למשל, מחולל תעודות סיום קורס מותאמות אישית.",
+    "categoryKey": "media",
+    "source": "TechRepublic",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQcDVWbnY0dl9hTHhSa0hWNEJnUVpfRkRtc0VTYXRCbHN5bWtZeGpEWjg1c2RQVmpxQ2JUZGQ4T1ZGQmp3X3pleHZjTTFHQ1JEdF9HZFRVUnN3ZTE0UDRJY2I0b1g4Mk0xb01mbnJFWlFGZTc3T0F6UElfa1hyajQ1TjFlUXl0UEpWU2tuZnhJcjdWQTlUSEpnd2N3?oc=5",
+    "timeAgo": "השבוע",
     "trending": false
   },
   {
     "id": 16,
-    "headline": "גוגל משיקה אפליקציית Gemini לחלונות, אבל משתמשי מק קיבלו יותר",
-    "explanation": "גוגל השיקה השבוע אפליקציית דסקטופ רשמית של Gemini למערכת ההפעלה Windows. עם זאת, נראה שהגרסה למחשבי מק, שהושקה קודם, כוללת יכולות מתקדמות יותר בשלב זה.",
-    "impact": "עבור צוותי הדרכה שעובדים בעיקר על Windows, זו הזדמנות להתחיל להשתמש ב-Gemini באופן נוח יותר ישירות משולחן העבודה, בלי צורך לפתוח דפדפן בכל פעם.",
-    "categoryKey": "ai_models",
+    "headline": "פיצ'ר חדש ב-Gemini פותר את התסכול הגדול ביותר בחיפוש על גבי מפה",
+    "explanation": "גוגל שילבה את Gemini ישירות במפות, מה שמאפשר לשאול שאלות מורכבות בשפה טבעית. למשל: \"מצא לי מסעדות איטלקיות כשרות עם חניה במרחק 10 דקות הליכה מפה\".",
+    "impact": "כשמתכננים יום עיון או סדנה מחוץ למשרד, אפשר להשתמש בזה כדי למצוא בקלות מקום שעונה על כל הדרישות: נגישות, גודל, ציוד טכני ואפשרויות צהריים בסביבה.",
+    "categoryKey": "language",
     "source": "Android Police",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOU1ZTd2JiS2M1MHRGQkRJWHNXNlcyNUNOQ3dyaXZQemVfcXBxVTF5MkZpbzd4NkpUV2ItVXBhV2s4QWFzelNDOXRVTzMtVDB3V2lVYWpJTHJCUUtJMEFsRVIySGdMcVBmZnJaVjFiajNTbU9OWWlZOEFpNEt1SWFNNnBnRzhTU1JyT2JabUJYTFpCNS1mTlh1Z1ZOOG8zSHRnLWVEdg?oc=5",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQblZpcG1aVk41bUhFYlVZWWNMb1NBc1VoSDRkT210SlpKRzhrVmgwc182WkV3ZEpTNDdkd0xzXzJ6MV9EUHJxbFpTOXJGTktGZmpqLWRJMUx4a2tOcW5sQTFqREdzVXU0eVh2OE5UTHhfR3d1ZmpwcG1qbFl2TFc1QmhTNkMzUkxiZktZ?oc=5",
+    "timeAgo": "השבוע",
+    "trending": false
+  },
+  {
+    "id": 38,
+    "headline": "עורך הווידאו החינמי VSDC מוסיף מחולל וידאו מבוסס AI",
+    "explanation": "תוכנת עריכת הווידאו הפופולרית VSDC שחררה גרסה חדשה עם כלי AI מובנה. מעכשיו אפשר ליצור קטעי וידאו חדשים מטקסט ישירות בתוך תוכנת העריכה, ולשלב אותם בפרויקט.",
+    "impact": "מפתחי הדרכה שיוצרים סרטוני הדרכה יכולים כעת לייצר אנימציות קצרות או קטעי מעבר ויזואליים בלי לחפש חומרים ברשת, מה שמקצר משמעותית את זמן ההפקה.",
+    "categoryKey": "media",
+    "source": "The National Law Review",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNTUp3VHE3RkRPMUxscjhXY1k4QWdjT3ZjOEJmTzcxLWczQ2VxcDl4UmU3a1dNMmlJZkF6Q1puZDdzaFVLbE9LNUx2TFIyU0ppNG1Mb2lqRm41UmNYbTlPSVlmWDBHUTRHVkpvVWFXUkJvLWZPbXBneFYtUVJmdjU0TndFbnhaZEJpZzhROTlUTWxHeVFhb2V4eldyUmxET2pOSGtFOHVLb0JtMUJ1UnRLcw?oc=5",
     "timeAgo": "השבוע",
     "trending": false
   },
   {
     "id": 10,
-    "headline": "רוצים לשפר את Claude? חברת Anthropic מבקשת שתשתפו את הקול שלכם",
-    "explanation": "חברת Anthropic פנתה למשתמשי Claude בבקשה לשתף דגימות קול כדי לעזור לה לאמן את יכולות הדיבור וההבנה הקולית של המודל. המטרה היא להפוך את האינטראקציה הקולית עם Claude לטבעית ומדויקת יותר.",
-    "impact": "בעתיד הקרוב, היכולת הזו תאפשר יצירת סימולציות הדרכה מבוססות קול. למשל, תרגול של שיחות שירות לקוחות, שבהן העובד מדבר עם בוט AI שמגיב בקול אנושי וטבעי.",
-    "categoryKey": "language",
-    "source": "BleepingComputer",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNYXdOQkNGN2NyMjVhNDlOZUVRTUdMWkE1OVNsaEtCQUcyS1hzQ2R3UkhLX1A4VjlWX2lOSHZXSjNSQ3NTT0g1M3ZCX0ltWHJSaGhDelJqdjJwbmVKeENqSkFIallKdzdVUWdqR0IwcndOLWhDbjdnbHN2NXFwTk1UczBMNkRoM3NVdllOcUhJUkFDZ3dWM0dfWnV4V19ldVVnS21UbEg3bnhBWV9FNzFHM3ZieWlYTy05aDJfYm9YYzZYdlJUODZBV0ZyTm3SAdIBQVVfeXFMTXhoYkFWNEtHOEVIclNCSlc0X3BsWk8yaGlGLVQyeFRZUm5rX2hNVjZtY0owZFIxZFFqdUxtbXNaQUgyR040UEpYM21Hdi1UTF9DbVJLRjRSa1RxdHA3cXNROFNtZ09ldEwtLWpSNGtJYnFqaVIta3BKdkdacXZqNFRWd0xZR0tLMUpWLVdUSUlhLUtvTUxSdGJEWS0zbEg1UkxPNHFDOURSalhKTHY5RXQ2b2xyNHRjbC1FNEMxcFR4Z1RWQnhyRVA1amZ1NHBqX1N3?oc=5",
-    "timeAgo": "השבוע",
-    "trending": false
-  },
-  {
-    "id": 29,
-    "headline": "האם OpenAI עובדת על רמקול חכם? דיווחים חושפים פרטים ראשונים",
-    "explanation": "לפי דיווחים חדשים, OpenAI עשויה לפתח את מוצר החומרה הראשון שלה: רמקול חכם מבוסס AI. הרמקול צפוי להציע יכולות שיחה מתקדמות בהרבה מהעוזרות הקוליות המוכרות כיום.",
-    "impact": "דמיינו כיתת הדרכה שבה רמקול חכם יכול לענות על שאלות המשתתפים בזמן אמת, להציג מידע רלוונטי על המסך, ואפילו לנהל תרגילים אינטראקטיביים עם הקבוצה.",
-    "categoryKey": "language",
-    "source": "Stocktwits",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOdmYzTEtZQk5pWFZmaHlVYmhxVGtVSno1dlYxR21PT0xBODJ1dHpucHlyRVlBcDJJMzdldmlHS1JmRTVxX0gtQm9nUy1iX1VYQzdPTTRBakZuYldTUXFLczRtc2dIOHBXdlhpN3dhdEVTQkxkWGxGZ2RnSkJ2QkU2ZTBaRFNSQ043RWszZ2FlMThCZl9MR3NxNE9mdWI2Y3JqRHJXYUYtdWVZTFh1TlVBdXFxcnoyb203MFByNEsxTjBkQ2JHT2JHXzlxLUJzTkxfNGF2ZUZHUmVIcDRLdWVHb0xpRU1yOEladmpr?oc=5",
-    "timeAgo": "השבוע",
-    "trending": false
-  },
-  {
-    "id": 6,
-    "headline": "חברת Anthropic מבקשת מהמשתמשים: 'תפסיקו להיות רעים לקלוד'",
-    "explanation": "בצעד יוצא דופן, חברת Anthropic עדכנה את תנאי השימוש שלה ואסרה על 'התנהגות פוגענית או אכזרית שלא לצורך' כלפי צ'אט ה-AI שלה, Claude. המטרה היא לקדם אינטראקציה חיובית ומכבדת עם הכלי.",
-    "impact": "זוהי תזכורת חשובה עבור אנשי הדרכה שמלמדים עובדים כיצד להשתמש בכלי AI. חשוב להדגיש את החשיבות של תקשורת מכבדת ויעילה עם הכלים, כדי לקבל מהם את התוצאות הטובות ביותר.",
+    "headline": "גוגל מציגה את Gemini 4 Argon: מודל חדש שמיועד לפתרון בעיות מורכבות במיוחד",
+    "explanation": "זוהי גרסת העל החדשה של ג'מיני, שמיועדת למשימות הדורשות חשיבה רב-שלבית ועמוקה. גוגל טוענת שהיא מצטיינת בניתוח מערכות סבוכות ופתרון אתגרים שדורשים הבנה רחבה.",
+    "impact": "צוות L&D שמתכנן תוכנית פיתוח מנהלים שנתית יכול להשתמש בארגון כדי למפות את כל צרכי הארגון, להצליב אותם עם כישורי המנהלים, ולהציע מסלולי למידה מותאמים אישית.",
     "categoryKey": "ai_models",
-    "source": "The Guardian",
-    "sourceUrl": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPb2lja2Y3b2J4SGw2TDhuWUNxNmxablZvTlcwSVg4eHhuSUFwNUEzQTd0WFhOTlJMd0F5UHBDSnhxTl9nVXJlNjFrZVBSc1Zic01sZ1RuZ2tTTlQ3RVVLUEw5OFI2NDcwNzNPSVpYTUJmR1pVdmd2NWkyOUtxcTg5bC05ckRhX1pnSVRZdVhLSlQ0ckU?oc=5",
+    "source": "blog.google",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQSnlfSFAtZ3F0bFlnbTVkTUJHb2ZMa2ZLR2Q0Zm4wUi1yd0dPNjk0Z1dxalhMZ0x3WFpmNGF0bnA5SGpnalRXSFZEcjc0M2VsNjlHOFZtU1dVVUlrUGpNN24zLW02V0U0NFk5Z3dwbDZFcE1kS0ZSaFNxOHVHUWdTWURZSWIyUENmbXdjeTRwOGQ3SkhOSHMxaHlBMVpEbWw2?oc=5",
+    "timeAgo": "השבוע",
+    "trending": false
+  },
+  {
+    "id": 45,
+    "headline": "מיקרוסופט משדרגת את Copilot Notebooks במטרה לעקוף את המתחרה של גוגל",
+    "explanation": "הכלי של מיקרוסופט, המקביל ל-NotebookLM, קיבל שדרוג משמעותי. הוא מאפשר להעלות מסמכים, לסכם אותם, לשאול עליהם שאלות וליצור תוכן חדש המבוסס עליהם.",
+    "impact": "מדריך שצריך להעביר קורס המבוסס על נהלים פנימיים ארוכים ומסורבלים, יכול להעלות את כל הנהלים לכלי וליצור ממנו תקציר, מצגת ואפילו שאלות למבחן.",
+    "categoryKey": "docs",
+    "source": "Root-Nation.com",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOWFhxZjVaRVZseGNyemI2YW9NMGxRUFVpYTJ0V1JNVkRiVXJKT2phaDUyM0VCVHVnbENnWUlmYnl5czUtUTMtMURMcWZETlBiR2gzZG9hSkI2dmQtNTA1VXlzUmpCeWNhWTFkU2VJaTBHVzZ1YXN0YUlpOHJLNENxSkk2MjJNVFQ2VlE1SmV4TEFLd2FWU3NlODdKbTI5OHZuQ3paYXYwVVJPMnRiN0lLUDFGV2pwcnhRYVU1bkkxaU9kNkgzQzM1eFVRRFIxdkpGSUlmWlFQZw?oc=5",
+    "timeAgo": "השבוע",
+    "trending": false
+  },
+  {
+    "id": 22,
+    "headline": "מיקרוסופט משיקה Copilot ייעודי לעורכי דין ולתחום המשפטי",
+    "explanation": "הגרסה החדשה של Copilot מותאמת במיוחד לעולם המשפט. היא יודעת לנתח מסמכים משפטיים, לסכם פסקי דין ולעזור בניסוח חוזים, תוך שמירה על הטרמינולוגיה המקצועית.",
+    "impact": "זהו מודל מצוין לאיך ניתן להתאים AI לתחום ספציפי. מחלקת הדרכה יכולה לקחת את הרעיון ולבנות בעזרת הכלים החדשים 'Copilot להדרכה' שיכיר את כל חומרי הלמידה בארגון.",
+    "categoryKey": "language",
+    "source": "LawSites",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQcUZTeHFON0FiQ0pLTm51eGx1YXVsT3VHOHdMTmJVbFRVVVUyNzZCVnpUbmxPaXR3SkIyN19maGNQMGVjaG5uZmlkZlk5UWVJOGdTcV93RjlZRlBOeE8zUHhSaElaODJQV0NFb3dDMnhIcGczUjZicFluSHdkR3llczVIVXp1V2pxcGhlZy01X25hOEs2X1pSRDZzbXRockRTVkpTMTRXQ0tIazlWZU9rcEdXVXlGeWZvTG93ZW93RVJyaDRnaWJTbUpHbGx1UnlBT3dCY2RBaDZKQWJsZldIVw?oc=5",
+    "timeAgo": "השבוע",
+    "trending": false
+  },
+  {
+    "id": 35,
+    "headline": "Canva משתפת פעולה עם EY ו-Snowflake ליצירת פלטפורמת AI לאנשי מכירות",
+    "explanation": "שלוש ענקיות טכנולוגיה חברו יחד כדי לבנות כלי AI שמסייע לאנשי מכירות. הכלי מנתח נתונים, מציע אסטרטגיות ויוצר חומרי שיווק מותאמים אישית באופן אוטומטי.",
+    "impact": "צוותי הדרכת מכירות יכולים להשתמש בפלטפורמה ככלי סימולציה מתקדם. אפשר לתת למדריכים להתאמן על תרחישי לקוח מורכבים שהמערכת מייצרת, ולקבל פידבק מבוסס נתונים.",
+    "categoryKey": "learning",
+    "source": "EY",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMijwJBVV95cUxOVnkyN3hHSTJ1eVBUVHlqZjVSWGZfbVdQeDBGa0YwN2dSYmx6elB6d210d1oybUFRTjl5a0NNSGxXeTd6XzFYRDdiR0MyQ2d5RGVqV1kzdG5OcEZBN3JHQ1FoaF8yeURHU1plU2d2WklIcGgtN205YUNYTWI2Q3FkTTg5YVBPTENycS0zdjdyV3lLRzYwM0UtMlJheWwwMFBRWEJCSEJEUnhnWjVXVXlPUTBhQ3dOaGVEMk54OHJwMzEzdE9RV0RHc0h2Z0JHY3BRczFyUEY4MUF5UFBla3BZWGxGUEpLVlppQ2cweUtQVE9uN185X1l6N0pZcFRxYzktWFVIazJLbHVZYk1SZF9F?oc=5",
+    "timeAgo": "אתמול",
+    "trending": false
+  },
+  {
+    "id": 41,
+    "headline": "מדריך טכני: איך לחבר את מחולל הווידאו Kling למערכות שלכם",
+    "explanation": "Kling הוא אחד ממחוללי הווידאו המבטיחים ביותר, וכעת יש לו API שמאפשר לחבר אותו לאתרים ואפליקציות. המדריך החדש מסביר למפתחים איך לבצע את החיבור ב-13 צעדים פשוטים.",
+    "impact": "צוות הדרכה עם יכולות טכניות יכול לחבר את Kling למערכת ה-LMS. כך, ניתן לאפשר לעובדים ליצור סרטוני סיכום קצרים בסוף כל יחידת לימוד, באופן אוטומטי.",
+    "categoryKey": "media",
+    "source": "https://tech-insider.org/",
+    "sourceUrl": "https://news.google.com/rss/articles/CBMickFVX3lxTE5UWjZ4Y3V6cXZtekdRYzFfQzZ6Y20wNU1NWkhONURzQzVsTzVwWlNhV19RLWpFMXJ1b3pyNFpuTU5pLUJjS1ZlUWxrNGJvakZXT1FWLXdUb0tUMlhsSTNGNmNzanRtd080U3Z2TG9aMGpRdw?oc=5",
     "timeAgo": "אתמול",
     "trending": false
   }
@@ -211,4 +211,4 @@ const NEWS_DATA = [
 
 window.NEWS_DATA = NEWS_DATA;
 window.CATEGORIES = CATEGORIES;
-window.LAST_UPDATED = "2026-10-11";
+window.LAST_UPDATED = "2026-10-18";
